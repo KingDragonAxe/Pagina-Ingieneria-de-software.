@@ -1,0 +1,23 @@
+[
+    {
+        "id": 1,
+        "nombre": "Axel Gabriel Sifuentes Hernández",
+        "email": "axel_gsh@outlook.com",
+        "password": "123456",
+        "rol": "Estudiante ISC - 7C"
+    },
+    {
+        "id": 2,
+        "nombre": "Miguel Ángel Andrade de los Santos",
+        "email": "miguel.andrade@uadec.edu.mx",
+        "password": "123456",
+        "rol": "Estudiante ISC - 7C"
+    },
+    {
+        "id": 3,
+        "nombre": "M.I. Liliana Guadalupe Alonso Sánchez",
+        "email": "liliana.alonso@uadec.edu.mx",
+        "password": "123456",
+        "rol": "Docente Titular"
+    }
+]

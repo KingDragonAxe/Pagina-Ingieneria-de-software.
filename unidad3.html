@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Unidad III: Gestión, Planificación y Calidad | Ingeniería de Software UAdeC FIME</title>
+<link href="css/estilos.css" rel="stylesheet"/>
+</head>
+<body>
+<!-- ENCABEZADO SUPERIOR LIMPIO (Sin el cuadro repetido de materia/docente y con botón circular de tema) -->
+<header class="encabezado-uadec">
+<div class="encabezado-contenedor">
+<a class="marca-uadec" href="index.html">
+<div class="icono-logo">&lt;/&gt;</div>
+<div class="titulo-sitio">
+<h1>UNIVERSIDAD AUTÓNOMA DE COAHUILA — FIME</h1>
+<p>Ingeniería de Software &amp; Gestión de Proyectos · Informe Educativo 2026</p>
+</div>
+</a>
+<div class="controles-superiores">
+<span class="pildora-sesion" id="etiquetaUsuarioActivo">Sin sesión iniciada</span>
+<button class="btn-modo-tema" onclick="cambiarModoTema()" title="Cambiar entre modo claro y oscuro" type="button"><i class="fa-solid fa-moon"></i></button>
+<button class="boton boton-rojo" id="btnCerrarSesion" onclick="cerrarSesion()" style="display:none;" type="button">Cerrar Sesión</button>
+</div>
+</div>
+</header>
+<!-- BARRA DE NAVEGACIÓN PRINCIPAL -->
+<nav class="barra-navegacion">
+<div class="menu-contenedor">
+<ul class="menu-lista">
+<li><a href="index.html" id="nav-btn-inicio">Inicio</a></li>
+<li><a href="unidad1.html" id="nav-btn-u1" onclick="return abrirUnidad('unidad1.html', 'pagina-u1')">Unidad I: Fundamentos y Proceso</a></li>
+<li><a href="unidad2.html" id="nav-btn-u2" onclick="return abrirUnidad('unidad2.html', 'pagina-u2')">Unidad II: Análisis y Modelado</a></li>
+<li><a class="activo" href="unidad3.html" id="nav-btn-u3" onclick="return abrirUnidad('unidad3.html', 'pagina-u3')">Unidad III: Gestión, Planificación y Calidad</a></li>
+<li><a href="unidad4.html" id="nav-btn-u4" onclick="return abrirUnidad('unidad4.html', 'pagina-u4')">Unidad IV: Diseño y Pruebas</a></li>
+</ul>
+</div>
+</nav>
+<main class="contenedor-principal">
+<div class="caja-alerta alerta-error" id="avisoSesionEnUnidad" style="display:none;">
+            Aviso: No has iniciado sesión. <a href="index.html">Regresa a Inicio para iniciar sesión</a>.
+        </div>
+<div class="panel-portada">
+<h2>UNIDAD III. GESTIÓN, PLANIFICACIÓN Y CALIDAD DE PROYECTOS DE SOFTWARE</h2>
+<p>Estudio exhaustivo de las 4 P's de la gestión, liderazgo MOI, estructuras de equipo DD/CD/CC, canales de comunicación, principio W5HH, recursos y componentes reutilizables, estimación por Tres Puntos, COCOMO básico/II, ecuación del software de Putnam, árboles de decisión Make or Buy, métricas KLOC y Puntos de Función (PF), Eficiencia en Eliminación de Defectos (EED), gestión proactiva de riesgos (RE = P × C y Plan RMMM), aseguramiento de calidad (SQA, amplificación de defectos y Revisiones Técnicas Formales RTF) y Gestión de la Configuración (GCS IEEE 828).</p>
+</div>
+<!-- PESTAÑAS DE LA UNIDAD III -->
+<div class="barra-subtemas">
+<button class="boton-subtema activo" onclick="mostrarSubtema('subtema-u3', 'u3-t1', this)" type="button">3.1 Gestión y Planificación (COCOMO)</button>
+<button class="boton-subtema" onclick="mostrarSubtema('subtema-u3', 'u3-t2', this)" type="button">3.2 Métricas del Proceso y Calidad</button>
+<button class="boton-subtema" onclick="mostrarSubtema('subtema-u3', 'u3-t3', this)" type="button">3.3 Gestión de Riesgos</button>
+<button class="boton-subtema" onclick="mostrarSubtema('subtema-u3', 'u3-t4', this)" type="button">3.4 Control de Calidad (SQA y RTF)</button>
+<button class="boton-subtema" onclick="mostrarSubtema('subtema-u3', 'u3-t5', this)" type="button">3.5 Configuración (GCS)</button>
+<button class="boton-subtema" onclick="mostrarSubtema('subtema-u3', 'u3-quiz', this)" type="button">Cuestionario Unidad III</button>
+</div>
+<!-- SUBTEMA 3.1 DETALLADO -->
+<div class="seccion-subtema subtema-u3 activo" id="u3-t1">
+<div class="tarjeta">
+<h3>3.1 Gestión y planificación de proyectos de software</h3>
+<h4>1. El Espectro de la Gestión: Las Cuatro P (Personal, Producto, Proceso y Proyecto)</h4>
+<p>La gestión eficaz de un proyecto de software se centra en cuatro elementos en orden estricto: (1) <strong>Personal</strong> (el factor humano más determinante del éxito), (2) <strong>Producto</strong> (comprender su ámbito y descomposición antes de planificar), (3) <strong>Proceso</strong> (elegir el modelo y descomponer sus tareas en una matriz función × actividad) y (4) <strong>Proyecto</strong> (planificar recursos, costos, calendario y riesgos).</p>
+<h4>2. Personal, Equipos de Trabajo y Comunicación</h4>
+<ul>
+<li><strong>Los 5 grupos de participantes (Stakeholders):</strong> (1) Gestores superiores (definen los aspectos de negocio), (2) Gestores técnicos o líderes de proyecto (planifican, motivan, organizan y controlan), (3) Profesionales o ingenieros (aportan las habilidades técnicas), (4) Clientes (especifican las necesidades de negocio) y (5) Usuarios finales (quienes interactúan a diario con el software ya liberado).</li>
+<li><strong>Liderazgo — El Modelo MOI (Gerald Weinberg):</strong> Un buen líder de proyecto aplica tres cualidades: <strong>M</strong>otivación (habilidad para alentar al personal técnico a producir al máximo de su capacidad), <strong>O</strong>rganización (habilidad para moldear procesos existentes o inventar nuevos para traducir el concepto en producto) e <strong>I</strong>deas o Innovación (hacer que la gente cree y se sienta creativa aun dentro de las restricciones del proyecto).</li>
+<li><strong>Las 3 Estructuras de Equipo de Software (Mantei):</strong></li>
+</ul>
+<div class="tabla-contenedor">
+<table class="tabla-datos">
+<thead>
+<tr><th>Estructura de Equipo</th><th>Organización y Flujo de Comunicación</th><th>Tipo de Proyecto Ideal</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>Democrático Descentralizado (DD)</strong></td><td>No tiene un líder permanente; se nombran coordinadores de tarea por corto plazo. Las decisiones se toman por consenso grupal y la comunicación es horizontal.</td><td>Problemas difíciles con alta incertidumbre e innovación, y proyectos de larga duración.</td></tr>
+<tr><td><strong>Controlado Descentralizado (CD)</strong></td><td>Tiene un líder definido que coordina tareas globales, mientras líderes secundarios dirigen subgrupos. La comunicación entre subgrupos es horizontal y dentro del subgrupo es vertical.</td><td>Problemas grandes que pueden dividirse claramente en subsistemas o módulos independientes.</td></tr>
+<tr><td><strong>Controlado Centralizado (CC)</strong></td><td>El líder del equipo resuelve los problemas de alto nivel y coordina internamente todo el trabajo; la comunicación entre el líder y los miembros es estrictamente vertical.</td><td>Problemas sencillos, rutinarios y bien conocidos con plazos de entrega muy cortos.</td></tr>
+</tbody>
+</table>
+</div>
+<p><strong>Los 4 Paradigmas Organizativos de Constantine:</strong> <em>Cerrado</em> (jerarquía tradicional de autoridad), <em>Aleatorio</em> (basado en la iniciativa individual libre, excelente para innovación), <em>Abierto</em> (combina controles jerárquicos con toma de decisiones por consenso) y <em>Sincronizado</em> (la estructura del problema divide naturalmente el trabajo con poca necesidad de comunicación verbal).</p>
+<p><strong>Coordinación y Fórmulas de Canales de Comunicación:</strong> La comunicación puede ser formal (documentos, RTF, minutas) o informal (consultas rápidas entre pares). El número de canales bidireccionales posibles entre <em>n</em> integrantes crece cuadráticamente:</p>
+<div class="caja-formula">
+Canales de comunicación:    C = n × (n − 1) / 2
+Ejemplo: Con n = 4 personas → C = 4 × 3 / 2 = 6 canales.
+         Con n = 8 personas → C = 8 × 7 / 2 = 28 canales.
+         Con n = 12 personas → C = 12 × 11 / 2 = 66 canales.
+                </div>
+<p><strong>El Principio W5HH de Barry Boehm y las 10 Señales de Peligro de Reel:</strong> Para mantener el proyecto en curso, Boehm plantea responder 7 preguntas: <strong>Why</strong> (¿Por qué se desarrolla el sistema?), <strong>What</strong> (¿Qué actividades se realizarán?), <strong>When</strong> (¿Cuándo ocurrirá cada hito?), <strong>Who</strong> (¿Quién es responsable de cada función?), <strong>Where</strong> (¿Dónde se ubican en la organización?), <strong>How</strong> (¿Cómo se hará técnica y gerencialmente?) y <strong>How much</strong> (¿Cuántos recursos se necesitan?).</p>
+<h4>3. Objetivos de la Planificación y Pirámide de Recursos</h4>
+<p>El objetivo de la planificación es proporcionar un marco de trabajo que permita al gestor hacer estimaciones razonables de recursos, costos y planificación temporal actualizables conforme avanza el proyecto. La pirámide de recursos incluye: (1) <strong>Recursos de Entorno (SEE — Software Engineering Environment)</strong> en la base (hardware, sistemas operativos, herramientas CASE), (2) <strong>Recursos de Software Reutilizables</strong> en el centro y (3) <strong>Recursos Humanos</strong> en la cúspide. Bennatan clasifica los componentes reutilizables en cuatro categorías:</p>
+<div class="tabla-contenedor">
+<table class="tabla-datos">
+<thead>
+<tr><th>Categoría de Componente Reutilizable</th><th>Descripción Técnica</th><th>Nivel de Riesgo</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>1. Componentes ya existentes (COTS)</strong></td><td>Software adquirido a un tercero, probado y listo para integrarse tal cual en el proyecto actual.</td><td>Bajo</td></tr>
+<tr><td><strong>2. Componentes de experiencia completa</strong></td><td>Especificaciones, diseños o código desarrollados en proyectos propios anteriores que son casi idénticos a los requeridos hoy.</td><td>Bajo</td></tr>
+<tr><td><strong>3. Componentes de experiencia parcial</strong></td><td>Código o diseños existentes que se relacionan con el proyecto actual pero requieren <strong>modificaciones sustanciales</strong>.</td><td><strong>ALTO</strong> (modificar código ajeno o viejo suele costar más que reescribirlo)</td></tr>
+<tr><td><strong>4. Componentes nuevos</strong></td><td>Componentes de software que el equipo debe construir completamente desde cero.</td><td>Medio</td></tr>
+</tbody>
+</table>
+</div>
+<h4>4. Estimación de Proyectos y Técnicas de Descomposición (Tres Puntos)</h4>
+<p>Para estimar con mayor precisión siempre se recomienda utilizar al menos dos técnicas independientes y conciliar los resultados. En la descomposición basada en el problema se divide el sistema en funciones y para cada función se calcula su valor esperado mediante la <strong>fórmula de tres puntos</strong>:</p>
+<div class="caja-formula">
+Estimación de Tres Puntos (Valor Esperado):
+S = (Sopt + 4 × Sm + Spes) / 6
+  Donde: Sopt = estimación optimista, Sm = estimación más probable (peso 4), Spes = estimación pesimista.
+  Esfuerzo (persona-meses) = Tamaño Total (LOC o PF) / Productividad histórica del equipo
+  Costo Total ($)          = Esfuerzo (persona-meses) × Costo laboral por persona-mes
+                </div>
+<div class="caja-ejemplo">
+<strong>Ejemplo numérico resuelto de descomposición:</strong> Un sistema se divide en 3 módulos: Interfaz (Opt: 1800, Prob: 2400, Pes: 2650 → <code>S = 2342 LOC</code>), Lógica (Opt: 4600, Prob: 6900, Pes: 8600 → <code>S = 6800 LOC</code>) y Base de Datos (Opt: 2000, Prob: 3000, Pes: 3500 → <code>S = 2917 LOC</code>). El tamaño total esperado es <strong>12,059 LOC</strong>. Si la productividad histórica de la empresa es de <code>620 LOC/persona-mes</code> y cada persona-mes cuesta <code>$8,000 USD</code>: el esfuerzo será <code>12,059 / 620 = 19.45 persona-meses</code> y el presupuesto estimado será <code>19.45 × $8,000 = $155,600 USD</code>.
+                </div>
+<h4>5. Modelos Empíricos de Estimación: COCOMO Básico, COCOMO II y Ecuación de Putnam</h4>
+<p>Los modelos empíricos tienen la forma general <code>E = A + B × (ev)^C</code>. El modelo más utilizado en la historia de la ingeniería de software es <strong>COCOMO (Constructive Cost Model)</strong> propuesto por <em>Barry Boehm</em>:</p>
+<div class="tabla-contenedor">
+<table class="tabla-datos">
+<thead>
+<tr><th>Modo del Proyecto en COCOMO</th><th>Características del Proyecto</th><th>a</th><th>b</th><th>c</th><th>d</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>Orgánico</strong></td><td>Proyectos pequeños y sencillos en los que trabajan equipos pequeños con buena experiencia en la aplicación y requisitos poco rígidos.</td><td>2.4</td><td>1.05</td><td>2.5</td><td>0.38</td></tr>
+<tr><td><strong>Semiacoplado</strong></td><td>Proyectos intermedios en tamaño y complejidad donde equipos con niveles mixtos de experiencia satisfacen requisitos medianamente rigurosos.</td><td>3.0</td><td>1.12</td><td>2.5</td><td>0.35</td></tr>
+<tr><td><strong>Empotrado</strong></td><td>Proyectos que deben desarrollarse dentro de un conjunto de restricciones muy estrechas de hardware, software y operación en tiempo real.</td><td>3.6</td><td>1.20</td><td>2.5</td><td>0.32</td></tr>
+</tbody>
+</table>
+</div>
+<div class="caja-formula">
+Ecuaciones de COCOMO Básico:
+1) Esfuerzo:           E = a × (KLOC)^b           [en persona-meses]
+2) Duración:           D = c × (E)^d              [en meses calendario]
+3) Personal promedio:  N = E / D                  [personas recomendadas]
+
+Ecuación del Software de Putnam (Curva de Norden-Rayleigh):
+E = [ LOC × B^(0.333) / P ]^3 × (1 / t^4)
+  (Por el factor 1 / t^4, comprimir el tiempo de entrega t un 10% multiplica el esfuerzo por 1 / 0.9^4 = 1.52, es decir, incrementa un 52% el esfuerzo requerido).
+                </div>
+<h4>6. La Decisión Desarrollar o Comprar (Make or Buy)</h4>
+<p>Para decidir racionalmente si conviene <strong>desarrollar</strong> a la medida, <strong>reutilizar</strong> módulos propios, <strong>comprar</strong> un paquete comercial o <strong>subcontratar</strong> a un proveedor externo, se construye un <strong>árbol de decisión</strong> y se calcula para cada rama:</p>
+<div class="caja-formula">
+Costo Esperado de una Opción = Σ [ Probabilidad del escenario i × Costo estimado del escenario i ]
+
+Ejemplo:
+• Opción Desarrollar: 30% de ser sencillo ($380,000) y 70% de ser difícil ($450,000)
+  → Costo Esperado = (0.30 × 380,000) + (0.70 × 450,000) = 114,000 + 315,000 = $429,000
+• Opción Comprar Paquete: 70% de requerir cambios menores ($210,000) y 30% de requerir cambios mayores ($400,000)
+  → Costo Esperado = (0.70 × 210,000) + (0.30 × 400,000) = 147,000 + 120,000 = $267,000 (Conviene Comprar).
+                </div>
+<div class="contenedor-diagrama">
+<img alt="Pilares de la Gestión, Estimación y Calidad" src="imagenes/diagrama_unidad3.svg" style="max-width:580px; width:100%;"/>
+<p class="pie-recurso">Figura 3.1: Integración de las 4 P, Estimación COCOMO, Riesgos y Calidad. Fuente: Boehm (2000) y Pressman (2010).</p>
+</div>
+<!-- Actividad Interactiva 3.1 -->
+
+<h4>Video Explicativo del Tema 3.1</h4>
+<div class="contenedor-video">
+<iframe allowfullscreen="" src="https://www.youtube-nocookie.com/embed/gLBiAwmDdzk" title="Modelo COCOMO de Estimación"></iframe>
+<p class="pie-recurso">Fuente del video: Gestión de Proyectos de Software — <a href="https://www.youtube.com/watch?v=gLBiAwmDdzk" target="_blank">https://www.youtube.com/watch?v=gLBiAwmDdzk</a></p>
+</div>
+<div class="caja-bibliografia">
+<strong>Fuente bibliográfica (APA 7):</strong> Boehm, B. W. et al. (2000). <em>Software Cost Estimation with COCOMO II</em>. Prentice Hall. · Brooks, F. P. (1995). <em>The Mythical Man-Month</em>. Addison-Wesley.
+                </div>
+</div>
+</div>
+<!-- SUBTEMA 3.2 DETALLADO -->
+<div class="seccion-subtema subtema-u3" id="u3-t2">
+<div class="tarjeta">
+<h3>3.2 Métricas del proceso, del proyecto y de calidad del software</h3>
+<h4>1. Diferencia entre Medida, Métrica e Indicador y Dominios de Medición</h4>
+<div class="tabla-contenedor">
+<table class="tabla-datos">
+<thead>
+<tr><th>Concepto</th><th>Definición Formal (IEEE / Pressman)</th><th>Ejemplo Práctico</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>Medida</strong></td><td>Proporciona una indicación cuantitativa de la extensión, cantidad, dimensiones, capacidad o tamaño de algún atributo de un producto o proceso.</td><td>En una revisión técnica se descubrieron <strong>12 errores</strong>.</td></tr>
+<tr><td><strong>Métrica</strong></td><td>Medida cuantitativa del grado en que un sistema, componente o proceso posee un atributo dado (relaciona dos o más medidas).</td><td>Se descubrieron 12 errores en 3 revisiones = <strong>4 errores por revisión</strong>.</td></tr>
+<tr><td><strong>Indicador</strong></td><td>Métrica o combinación de métricas que proporciona una visión profunda del proceso o proyecto y permite al gestor tomar decisiones correctivas.</td><td>Si la tasa de errores en diseño subió 40% respecto al promedio histórico, hay que reforzar las revisiones antes de codificar.</td></tr>
+</tbody>
+</table>
+</div>
+<p><strong>Dominio de Proceso (Estratégico) vs. Dominio de Proyecto (Táctico):</strong> Las métricas de proceso se recopilan a lo largo de todos los proyectos y durante largos periodos para mejorar la madurez organizacional (con ética de métricas de Grady: nunca usar métricas privadas para castigar individuos). Las métricas de proyecto permiten al líder ajustar el flujo de trabajo y evaluar la calidad día a día.</p>
+<h4>2. Métricas Orientadas al Tamaño (LOC) vs. Orientadas a la Función (Puntos de Función — PF)</h4>
+<p>Las métricas basadas en <strong>Líneas de Código (LOC / KLOC)</strong> son sencillas de contar al finalizar, pero dependen del lenguaje de programación y penalizan el código conciso y bien diseñado. En cambio, los <strong>Puntos de Función (PF)</strong> propuestos por Allan Albrecht miden la funcionalidad entregada al usuario independientemente del lenguaje mediante cinco parámetros del dominio de información:</p>
+<div class="tabla-contenedor">
+<table class="tabla-datos">
+<thead>
+<tr><th>Parámetro del Dominio de Información</th><th>Peso Simple</th><th>Peso Medio</th><th>Peso Complejo</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>1. Entradas Externas (EE):</strong> Pantallas o formularios de captura del usuario.</td><td>3</td><td>4</td><td>6</td></tr>
+<tr><td><strong>2. Salidas Externas (SE):</strong> Informes, recibos, pantallas de resultados calculados.</td><td>4</td><td>5</td><td>7</td></tr>
+<tr><td><strong>3. Consultas Externas (CE):</strong> Búsquedas en línea que recuperan datos sin modificar archivos.</td><td>3</td><td>4</td><td>6</td></tr>
+<tr><td><strong>4. Archivos Lógicos Internos (ALI):</strong> Agrupaciones lógicas de datos o tablas dentro del sistema.</td><td>7</td><td>10</td><td>15</td></tr>
+<tr><td><strong>5. Interfaces Externas (IE):</strong> Archivos o APIs compartidos con sistemas externos.</td><td>5</td><td>7</td><td>10</td></tr>
+</tbody>
+</table>
+</div>
+<div class="caja-formula">
+Cálculo de Puntos de Función (IFPUG):
+PF = Cuenta_Total × [ 0.65 + 0.01 × Σ(Fi) ]
+  Donde Σ(Fi) es la suma de los 14 factores de ajuste de complejidad valorados de 0 (sin influencia) a 5 (esencial).
+  (Si todos los Fi valen 0, el multiplicador es 0.65; si todos valen 5, ΣFi = 70 y el multiplicador es 1.35, ajustando ±35%).
+                </div>
+<div class="caja-ejemplo">
+<strong>Ejemplo resuelto de Puntos de Función:</strong> Un proyecto de complejidad media tiene 50 EE (50×4 = 200), 40 SE (40×5 = 200), 35 CE (35×4 = 140), 6 ALI (6×10 = 60) y 4 IE (4×7 = 28). La <code>Cuenta_Total = 200 + 200 + 140 + 60 + 28 = 628</code>. Si la suma de los 14 factores es <code>Σ(Fi) = 46</code>, entonces <code>PF = 628 × [0.65 + 0.01(46)] = 628 × 1.11 = 697.08 ≈ 697 PF</code>.
+                </div>
+<h4>3. Métricas para la Calidad del Software (Corrección, Mantenimiento, Integridad, Disponibilidad y EED)</h4>
+<ul>
+<li><strong>Corrección:</strong> Grado en que el software lleva a cabo su función requerida; se mide en <code>defectos por KLOC</code> durante el primer año de uso.</li>
+<li><strong>Facilidad de mantenimiento:</strong> Se mide indirectamente con el <strong>Tiempo Medio de Cambio (TMC)</strong> (tiempo promedio para analizar, diseñar, codificar, probar y distribuir una solicitud de cambio).</li>
+<li><strong>Integridad (Seguridad ante ataques):</strong> Se calcula como <code>Integridad = Σ [1 − amenaza × (1 − seguridad)]</code>, donde <em>amenaza</em> es la probabilidad de que ocurra un ataque y <em>seguridad</em> es la probabilidad de repelerlo.</li>
+<li><strong>Fiabilidad y Disponibilidad:</strong> Con el Tiempo Medio de Fallo (<em>TMF</em>) y el Tiempo Medio de Reparación (<em>TMR</em>):</li>
+</ul>
+<div class="caja-formula">
+Tiempo Medio Entre Fallos:                  TMEF = TMF + TMR
+Disponibilidad del Sistema (%):             Disponibilidad = [ TMF / (TMF + TMR) ] × 100%
+Eficiencia en la Eliminación de Defectos:   EED = E / (E + D)
+  Donde E = errores encontrados antes de entregar el software, y D = defectos encontrados por el cliente tras la entrega.
+                </div>
+<p><strong>Modelos de factores de calidad:</strong> El modelo clásico de <strong>McCall</strong> agrupa 11 factores en tres ejes: <em>Operación del producto</em> (corrección, fiabilidad, eficiencia, integridad, facilidad de uso), <em>Revisión del producto</em> (mantenibilidad, flexibilidad, facilidad de prueba) y <em>Transición del producto</em> (portabilidad, reusabilidad, interoperabilidad). El modelo <strong>FURPS</strong> (Hewlett-Packard) y el estándar vigente <strong>ISO/IEC 25010 (SQuaRE)</strong> actualizan esta taxonomía.</p>
+<!-- Actividad Interactiva 3.2 -->
+
+<h4>Video Explicativo del Tema 3.2</h4>
+<div class="contenedor-video">
+<iframe allowfullscreen="" src="https://www.youtube-nocookie.com/embed/apTIvDk2u7c" title="Puntos de Función PF"></iframe>
+<p class="pie-recurso">Fuente del video: Métricas y Estimación IFPUG — <a href="https://www.youtube.com/watch?v=apTIvDk2u7c" target="_blank">https://www.youtube.com/watch?v=apTIvDk2u7c</a></p>
+</div>
+<div class="caja-bibliografia">
+<strong>Fuente bibliográfica (APA 7):</strong> Albrecht, A. J. (1979). Measuring Application Development Productivity. · ISO/IEC 25010:2023 (SQuaRE). · Pressman, R. S. (2010). <em>Ingeniería del software</em> (Caps. 23 y 25). McGraw-Hill.
+                </div>
+</div>
+</div>
+<!-- SUBTEMA 3.3 DETALLADO -->
+<div class="seccion-subtema subtema-u3" id="u3-t3">
+<div class="tarjeta">
+<h3>3.3 Gestión de riesgos: Identificación, clasificación y estrategias proactivas y reactivas</h3>
+<p>Todo riesgo de software posee dos características esenciales: <strong>incertidumbre</strong> (el acontecimiento que caracteriza al riesgo puede o no ocurrir; no existen riesgos con 100% de probabilidad, pues esos ya son restricciones o hechos) y <strong>pérdida</strong> (si el riesgo se convierte en realidad, ocurrirán consecuencias no deseadas o pérdidas económicas, de tiempo o de calidad).</p>
+<h4>1. Estrategias de Riesgo Reactivas vs. Proactivas</h4>
+<div class="tabla-contenedor">
+<table class="tabla-datos">
+<thead>
+<tr><th>Estrategia Reactiva («Apagar Fuegos»)</th><th>Estrategia Proactiva (Ingeniería de Software Madura)</th></tr>
+</thead>
+<tbody>
+<tr>
+<td>Monitorea el proyecto en busca de riesgos probables, pero <strong>reserva los recursos para actuar únicamente cuando el riesgo ya se convirtió en un problema real</strong>. Pressman la denomina la escuela <em>«Indiana Jones»</em> («no te preocupes, pensaré en algo cuando estalle»). Si falla la mitigación tardía, el proyecto entra en crisis.</td>
+<td>Comienza mucho antes de que inicie el trabajo técnico: se identifican los riesgos potenciales, se valora su probabilidad e impacto, se ordenan por importancia y se establece un <strong>Plan RMMM</strong> para evitar que el riesgo ocurra (mitigación) y tener listo un plan de contingencia si llega a materializarse.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4>2. Identificación y Clasificación de los Riesgos del Software</h4>
+<ul>
+<li><strong>Riesgos del proyecto:</strong> Amenazan el plan del proyecto (presupuesto, calendario, personal, recursos, clientes y requisitos). Si se hacen realidad, es probable que la planificación temporal se retrase y los costos suban.</li>
+<li><strong>Riesgos técnicos:</strong> Amenazan la calidad y la planificación temporal del software a producir (problemas de diseño, implementación, interfaz, verificación y mantenimiento, ambigüedad de especificaciones o tecnología de punta no probada).</li>
+<li><strong>Riesgos del negocio:</strong> Amenazan la viabilidad comercial del software. Los 5 principales son: (1) <em>Riesgo de mercado</em> (construir un producto excelente que nadie quiere comprar), (2) <em>Riesgo estratégico</em> (construir un producto que ya no encaja en la estrategia comercial), (3) <em>Riesgo de ventas</em> (el equipo comercial no sabe cómo venderlo), (4) <em>Riesgo de dirección</em> (perder el apoyo de la gerencia) y (5) <em>Riesgo de presupuesto</em> (perder los fondos asignados).</li>
+<li><strong>Clasificación por grado de conocimiento (Charette):</strong> <em>Riesgos conocidos</em> (se descubren al evaluar el plan y el entorno), <em>Riesgos predecibles</em> (se extrapolan de la experiencia en proyectos anteriores, como la rotación de personal) y <em>Riesgos impredecibles</em>.</li>
+</ul>
+<h4>3. Proyección del Riesgo, Exposición al Riesgo (RE) y Plan RMMM</h4>
+<p>Para cada riesgo identificado se estima su probabilidad de ocurrencia <code>P</code> (entre 0.0 y 1.0) y el costo o impacto <code>C</code> si el riesgo se materializa, calculando la <strong>Exposición al Riesgo (RE — Risk Exposure)</strong>:</p>
+<div class="caja-formula">
+Exposición al Riesgo:    RE = P × C
+Ejemplo: Si existe un 80% de probabilidad (P = 0.80) de que solo se puedan reutilizar 18 de 60 componentes previstos, y desarrollar los faltantes cuesta $25,000 USD (C):
+         RE = 0.80 × $25,000 = $20,000 USD (valor esperado de pérdida que debe reservarse o mitigarse).
+                </div>
+<p>Aplicando el <strong>Principio de Pareto (80/20)</strong>, cerca del 80% de la exposición total al riesgo proviene del 20% de los riesgos más críticos; sobre ellos se documenta el <strong>Plan RSGR / RMMM (Mitigación, Supervisión y Gestión del Riesgo)</strong>.</p>
+<!-- Actividad Interactiva 3.3 -->
+
+<h4>Video Explicativo del Tema 3.3</h4>
+<div class="contenedor-video">
+<iframe allowfullscreen="" src="https://www.youtube-nocookie.com/embed/gnnssd_uVJc" title="Gestión de Riesgos Proactiva y Reactiva"></iframe>
+<p class="pie-recurso">Fuente del video: Gestión de Riesgos en TI — <a href="https://www.youtube.com/watch?v=gnnssd_uVJc" target="_blank">https://www.youtube.com/watch?v=gnnssd_uVJc</a></p>
+</div>
+<div class="caja-bibliografia">
+<strong>Fuente bibliográfica (APA 7):</strong> Pressman, R. S. (2010). <em>Ingeniería del software: Un enfoque práctico</em> (7.ª ed., Cap. 28: Gestión del riesgo, pp. 625–639). McGraw-Hill. · ISO 31000.
+                </div>
+</div>
+</div>
+<!-- SUBTEMA 3.4 DETALLADO -->
+<div class="seccion-subtema subtema-u3" id="u3-t4">
+<div class="tarjeta">
+<h3>3.4 Control y aseguramiento de la calidad del software: Conceptos, Revisiones y RTF</h3>
+<h4>1. Conceptos de Calidad y Costo de la Calidad</h4>
+<p>La <strong>calidad del software</strong> se define como la concordancia con los requisitos funcionales y de rendimiento explícitamente establecidos, con los estándares de desarrollo explícitamente documentados y con las características implícitas que se espera de todo software desarrollado profesionalmente.</p>
+<ul>
+<li><strong>Calidad de diseño vs. Calidad de concordancia:</strong> La <em>calidad de diseño</em> abarca las características que los diseñadores especifican para un elemento (requisitos, especificaciones); la <em>calidad de concordancia</em> es el grado en que las especificaciones de diseño se aplican durante la fabricación o codificación.</li>
+<li><strong>Control de calidad vs. Garantía de calidad (SQA):</strong> El <em>control de calidad</em> es una serie de inspecciones, revisiones y pruebas utilizadas a lo largo del proceso para asegurar que cada producto de trabajo cumpla sus requisitos. La <em>garantía o aseguramiento de calidad (SQA)</em> consiste en las funciones de auditoría e información a la gerencia.</li>
+<li><strong>El Costo de la Calidad:</strong> Incluye todos los costos incurridos en la búsqueda de la calidad y se divide en:
+                        <ol>
+<li><strong>Costos de prevención:</strong> Planificación de la calidad, revisiones técnicas formales (RTF), equipo de pruebas y capacitación.</li>
+<li><strong>Costos de evaluación:</strong> Inspecciones entre procesos, calibración, mantenimiento de equipos y ejecución de pruebas.</li>
+<li><strong>Costos de fallo interno:</strong> Surgen cuando se detecta un error <em>antes</em> de la entrega (costos de retrabajo, reparación y análisis del modo de fallo).</li>
+<li><strong>Costos de fallo externo:</strong> Asociados con defectos encontrados <em>después</em> de que el producto se ha enviado al cliente (resolución de quejas, devolución y sustitución, soporte telefónico y trabajo de garantía).</li>
+</ol>
+</li>
+</ul>
+<h4>2. Evolución de la Calidad y Aseguramiento de Calidad del Software (SQA — IEEE Std 730)</h4>
+<p>La gestión de calidad evolucionó desde la simple <em>inspección final</em> hasta el <em>control estadístico de procesos</em> (Shewhart), la <em>Gestión de Calidad Total (TQM — Deming, Juran, ciclo PDCA Planificar-Hacer-Verificar-Actuar)</em> y <em>Seis Sigma (DMAIC: Definir, Medir, Analizar, Mejorar y Controlar, buscando un máximo de 3.4 defectos por millón de oportunidades)</em>. El grupo independiente de <strong>SQA</strong> redacta el Plan de SQA (regido por <strong>IEEE Std 730</strong>), audita productos de trabajo y aplica el <strong>SQA Estadístico</strong> mediante el Principio de Pareto: identificar el 20% de las causas vitales (como especificaciones incompletas o mala comunicación con el cliente) que originan el 80% de los defectos.</p>
+<h4>3. Revisiones del Software y Revisiones Técnicas Formales (RTF / FTR)</h4>
+<p>Las revisiones actúan como un <strong>filtro temprano</strong> en el proceso de ingeniería de software para evitar el fenómeno de <strong>amplificación de defectos</strong> (un error de diseño que no se detecta temprano se multiplica por 1.5x a 3x al pasar a la codificación y por mucho más en las pruebas). Los tipos de revisión van desde las <em>revisiones informales de escritorio</em> y los <em>recorridos (walkthroughs)</em> hasta las <em>inspecciones de Fagan</em> y la <strong>Revisión Técnica Formal (RTF)</strong>:</p>
+<div class="tabla-contenedor">
+<table class="tabla-datos">
+<thead>
+<tr><th>Aspecto de una RTF</th><th>Regla y Directriz Obligatoria según Pressman e IEEE Std 1028</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>Participantes y Duración</strong></td><td>Deben participar entre <strong>3 y 5 personas</strong>. La preparación previa de cada revisor no debe exceder <strong>2 horas</strong>, y la reunión de revisión debe durar <strong>menos de 2 horas</strong>, enfocándose en una parte específica y pequeña del software.</td></tr>
+<tr><td><strong>Roles en la Reunión</strong></td><td><strong>Productor (Autor)</strong> que presenta el producto terminado; <strong>Líder de la revisión</strong> que evalúa si está listo y modera la agenda; <strong>Revisores</strong> que buscan errores previamente; y <strong>Registrador</strong> que anota por escrito todos los problemas detectados.</td></tr>
+<tr><td><strong>Veredicto Final</strong></td><td>Al concluir, los asistentes firman una de tres decisiones: (1) <em>Aceptar el producto sin modificaciones</em>, (2) <em>Rechazar el producto</em> por errores graves, o (3) <em>Aceptar el producto provisionalmente</em> sujeto a corregir errores menores.</td></tr>
+<tr><td><strong>Directrices de Oro</strong></td><td><strong>1. Revisar el producto, NUNCA al productor (autor).</strong> 2. Fijar una agenda y mantenerla. 3. Limitar el debate y las refutaciones. 4. Enunciar las áreas de problemas, pero <strong>no intentar resolver cada problema durante la reunión</strong>. 5. Tomar notas escritas y usar listas de comprobación (<em>checklists</em>).</td></tr>
+</tbody>
+</table>
+</div>
+<h4>Video Explicativo del Tema 3.4</h4>
+<div class="contenedor-video">
+<iframe allowfullscreen="" src="https://www.youtube-nocookie.com/embed/TdMMRVrwRJk" title="Revisiones y Calidad de Software"></iframe>
+<p class="pie-recurso">Fuente del video: Universidad Católica San Antonio de Murcia (UCAM) — <a href="https://www.youtube.com/watch?v=TdMMRVrwRJk" target="_blank">https://www.youtube.com/watch?v=TdMMRVrwRJk</a></p>
+</div>
+<div class="caja-bibliografia">
+<strong>Fuente bibliográfica (APA 7):</strong> Fagan, M. E. (1976). Design and code inspections to reduce errors in program development. <em>IBM Systems Journal</em>, 15(3), 182–211. · IEEE Std 730-2014 &amp; IEEE Std 1028.
+                </div>
+</div>
+</div>
+<!-- SUBTEMA 3.5 DETALLADO -->
+<div class="seccion-subtema subtema-u3" id="u3-t5">
+<div class="tarjeta">
+<h3>3.5 Gestión de la configuración del software (GCS): Elementos, Versiones y Control de Cambios</h3>
+<p>El cambio es inevitable durante todo el ciclo de vida del software (nuevas condiciones de negocio, nuevos requisitos del cliente, reorganizaciones o restricciones presupuestarias). La <strong>Gestión de la Configuración del Software (GCS / SCM)</strong> es un conjunto de actividades sombrilla diseñadas para: (1) identificar el cambio, (2) controlar el cambio, (3) garantizar que el cambio se implementa adecuadamente y (4) informar del cambio a todos los interesados.</p>
+<h4>1. Identificación de Elementos de Configuración (ECS) y Líneas Base (Baselines)</h4>
+<ul>
+<li><strong>Elemento de Configuración del Software (ECS / SCI):</strong> Cualquier unidad de información creada como parte del proceso de ingeniería de software que se coloca bajo control de configuración (especificaciones de requisitos, modelos de diseño, archivos de código fuente, suites de casos de prueba, manuales de usuario y scripts de base de datos).</li>
+<li><strong>Objetos Básicos vs. Objetos Agregados:</strong> Un <em>objeto básico</em> es una unidad de texto o código individual creada por un ingeniero (ej. un módulo <code>ProductoBLL.vb</code> o una sección de la ERS). Un <em>objeto agregado</em> es una colección de objetos básicos y otros objetos agregados (ej. la Especificación Completa del Diseño). Cada objeto se identifica por su nombre único, descripción, lista de recursos y realización, relacionándose en un <strong>grafo de evolución</strong>.</li>
+<li><strong>Línea Base (Baseline — IEEE Std 610.12):</strong> Es una especificación o producto que ha sido <em>revisado formalmente y sobre el que se ha llegado a un acuerdo</em>, y que de ahí en adelante sirve como base para un desarrollo posterior y <strong>puede cambiarse solamente a través de procedimientos formales de control de cambios</strong>. Antes de que un ECS sea línea base puede cambiarse de manera informal y rápida; una vez que pasa una RTF y se convierte en línea base, queda «congelado» bajo control formal.</li>
+</ul>
+<h4>2. Control de Versiones y Control de Cambios</h4>
+<ul>
+<li><strong>Control de versiones:</strong> Combina procedimientos y herramientas (como <strong>Git / GitHub</strong>) para gestionar las diferentes versiones y variantes de los objetos de configuración creadas durante el proceso. Permite reconstruir cualquier edición previa o mantener ramas en paralelo sin sobrescribir el trabajo de otros desarrolladores.</li>
+<li><strong>Proceso Formal de Control de Cambios:</strong>
+<ol>
+<li>El usuario o desarrollador presenta una <strong>Solicitud de Cambio</strong> formal.</li>
+<li>Se evalúa técnicamente el impacto del cambio y se genera un <strong>Informe de Cambio</strong>.</li>
+<li>La <strong>Autoridad de Control de Cambios (ACC / CCB)</strong> revisa el costo, riesgo e impacto y decide aprobar o rechazar la petición.</li>
+<li>Si se aprueba, se genera una <strong>Orden de Cambio de Ingeniería (OCI / ECO)</strong>; el desarrollador realiza un <em>check-out</em> (control de acceso y sincronización) de los ECS afectados, aplica la modificación, pasa una revisión SQA/RTF y realiza el <em>check-in</em> para liberar la nueva versión de la línea base.</li>
+</ol>
+</li>
+<li><strong>Auditoría de configuración e Informes de estado (Contabilidad de estado):</strong> La <em>auditoría</em> complementa a la RTF verificando que no se hayan introducido cambios no autorizados y que todos los documentos relacionados se hayan actualizado. Los <em>informes de estado</em> responden en todo momento: <em>¿Qué pasó?, ¿Quién lo hizo?, ¿Cuándo pasó? y ¿Qué más se vio afectado?</em></li>
+</ul>
+<!-- Actividad Interactiva 3.5 -->
+
+<h4>Video Explicativo del Tema 3.5</h4>
+<div class="contenedor-video">
+<iframe allowfullscreen="" src="https://www.youtube-nocookie.com/embed/bn6lAO6p95k" title="Gestión de la Configuración del Software"></iframe>
+<p class="pie-recurso">Fuente del video: Ingeniería de Configuración y Versiones — <a href="https://www.youtube.com/watch?v=bn6lAO6p95k" target="_blank">https://www.youtube.com/watch?v=bn6lAO6p95k</a></p>
+</div>
+<div class="caja-bibliografia">
+<strong>Fuente bibliográfica (APA 7):</strong> IEEE. (2012). <em>IEEE Std 828-2012: Standard for Configuration Management in Systems and Software Engineering</em>. · Pressman, R. S. (2010). <em>Ingeniería del software</em> (Cap. 22). McGraw-Hill.
+                </div>
+</div>
+</div>
+<!-- CUESTIONARIO DE LA UNIDAD III -->
+<div class="seccion-subtema subtema-u3" id="u3-quiz">
+<div class="tarjeta">
+<h3>Autoevaluación Interactiva de la Unidad III</h3>
+<p>Responde las siguientes 5 preguntas sobre Gestión, Planificación, Riesgos, Calidad y Configuración:</p>
+<div id="contenedorQuizU3"></div>
+</div>
+</div>
+</main>
+<!-- PIE DE PÁGINA INSTITUCIONAL Y DATOS DEL EQUIPO -->
+<footer class="pie-pagina">
+<div class="pie-contenedor">
+<div>
+<strong>Proyecto Final — Ingeniería de Software (Noviembre 2026)</strong><br/>
+                Universidad Autónoma de Coahuila (UAdeC) · Facultad de Ingeniería Mecánica y Eléctrica (FIME)<br/>
+                Docente: M.I. Liliana Guadalupe Alonso Sánchez · 7° Semestre, Sección C, Carrera: ISC
+            </div>
+<div>
+<strong>Integrantes del Equipo:</strong><br/>
+                1. Axel Gabriel Sifuentes Hernández (<a href="mailto:axelsifuentes@uadec.edu.mx">axelsifuentes@uadec.edu.mx</a>)<br/>
+                2. Miguel Ángel Andrade de los Santos (<a href="mailto:miguelandrade@uadec.edu.mx">miguelandrade@uadec.edu.mx</a>)<br/>
+                Redes: <a href="https://www.facebook.com/share/18JKcGhgsj/" target="_blank">Facebook</a> |
+                <a href="https://www.instagram.com/axel.gsh?srtk=MThwaTBlMThrd2VkaQ==" target="_blank">Instagram</a> |
+                <a href="https://www.tiktok.com/@gsh_axel?_r=1&amp;_t=ZT-9At7OpCqkCk" target="_blank">TikTok</a>
+</div>
+</div>
+</footer>
+<script src="js/funciones.js"></script>
+<script src="js/gestion.js"></script>
+<script src="js/cuestionarios.js"></script>
+</body>
+</html>

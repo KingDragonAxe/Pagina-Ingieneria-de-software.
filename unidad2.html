@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Unidad II: Análisis y Modelado | Ingeniería de Software UAdeC FIME</title>
+<link href="css/estilos.css" rel="stylesheet"/>
+</head>
+<body>
+<!-- ENCABEZADO SUPERIOR LIMPIO (Sin el cuadro repetido de materia/docente y con botón circular de tema) -->
+<header class="encabezado-uadec">
+<div class="encabezado-contenedor">
+<a class="marca-uadec" href="index.html">
+<div class="icono-logo">&lt;/&gt;</div>
+<div class="titulo-sitio">
+<h1>UNIVERSIDAD AUTÓNOMA DE COAHUILA — FIME</h1>
+<p>Ingeniería de Software &amp; Gestión de Proyectos · Informe Educativo 2026</p>
+</div>
+</a>
+<div class="controles-superiores">
+<span class="pildora-sesion" id="etiquetaUsuarioActivo">Sin sesión iniciada</span>
+<button class="btn-modo-tema" onclick="cambiarModoTema()" title="Cambiar entre modo claro y oscuro" type="button"><i class="fa-solid fa-moon"></i></button>
+<button class="boton boton-rojo" id="btnCerrarSesion" onclick="cerrarSesion()" style="display:none;" type="button">Cerrar Sesión</button>
+</div>
+</div>
+</header>
+<!-- BARRA DE NAVEGACIÓN PRINCIPAL -->
+<nav class="barra-navegacion">
+<div class="menu-contenedor">
+<ul class="menu-lista">
+<li><a href="index.html" id="nav-btn-inicio">Inicio</a></li>
+<li><a href="unidad1.html" id="nav-btn-u1" onclick="return abrirUnidad('unidad1.html', 'pagina-u1')">Unidad I: Fundamentos y Proceso</a></li>
+<li><a class="activo" href="unidad2.html" id="nav-btn-u2" onclick="return abrirUnidad('unidad2.html', 'pagina-u2')">Unidad II: Análisis y Modelado</a></li>
+<li><a href="unidad3.html" id="nav-btn-u3" onclick="return abrirUnidad('unidad3.html', 'pagina-u3')">Unidad III: Gestión, Planificación y Calidad</a></li>
+<li><a href="unidad4.html" id="nav-btn-u4" onclick="return abrirUnidad('unidad4.html', 'pagina-u4')">Unidad IV: Diseño y Pruebas</a></li>
+</ul>
+</div>
+</nav>
+<main class="contenedor-principal">
+<div class="caja-alerta alerta-error" id="avisoSesionEnUnidad" style="display:none;">
+            Aviso: No has iniciado sesión. <a href="index.html">Regresa a Inicio para iniciar sesión</a>.
+        </div>
+<div class="panel-portada">
+<h2>UNIDAD II. ANÁLISIS Y MODELADO DE REQUISITOS</h2>
+<p>Estudio completo de las 5 tareas del análisis de requisitos, técnicas de obtención (entrevistas, FAST, QFD, casos de uso), los 5 principios operativos de Davis, estudio de viabilidad, descomposición funcional, modelado de datos (DER y normalización 1FN–3FN), modelado funcional (DFD por niveles, equilibrio y PSPEC), modelado del comportamiento (DTE y CSPEC), Diccionario de Datos y norma IEEE Std 830 / ISO 29148.</p>
+</div>
+<!-- PESTAÑAS DE LA UNIDAD II -->
+<div class="barra-subtemas">
+<button class="boton-subtema activo" onclick="mostrarSubtema('subtema-u2', 'u2-t1', this)" type="button">2.1 Análisis y Principios</button>
+<button class="boton-subtema" onclick="mostrarSubtema('subtema-u2', 'u2-t2', this)" type="button">2.2 Problema, Ámbito y Descomposición</button>
+<button class="boton-subtema" onclick="mostrarSubtema('subtema-u2', 'u2-t3', this)" type="button">2.3 Modelo de Análisis (DER, DFD, DTE)</button>
+<button class="boton-subtema" onclick="mostrarSubtema('subtema-u2', 'u2-t4', this)" type="button">2.4 Análisis Estructurado e IEEE 830</button>
+<button class="boton-subtema" onclick="mostrarSubtema('subtema-u2', 'u2-quiz', this)" type="button">Cuestionario Unidad II</button>
+</div>
+<!-- SUBTEMA 2.1 DETALLADO -->
+<div class="seccion-subtema subtema-u2 activo" id="u2-t1">
+<div class="tarjeta">
+<h3>2.1 Análisis de requisitos y principios del análisis</h3>
+<p>
+                    El <strong>análisis de requisitos del software</strong> es el puente técnico entre la ingeniería de sistemas (donde se asigna el papel del software) y el diseño del software. Permite al ingeniero especificar la función y el rendimiento del software, indicar la interfaz con otros elementos del sistema y establecer las restricciones que debe cumplir.
+                </p>
+<h4>Las Cinco Áreas de Esfuerzo (Tareas) del Análisis de Requisitos</h4>
+<ol>
+<li><strong>1. Reconocimiento del problema:</strong> Estudiar la especificación del sistema y el plan del proyecto para comprender el ámbito del software en el contexto del negocio y las necesidades de los interesados.</li>
+<li><strong>2. Evaluación y síntesis:</strong> Definir todos los objetos de datos observables externamente, evaluar el flujo y contenido de la información, definir y elaborar todas las funciones del software, comprender el comportamiento del sistema en el contexto de los sucesos que afectan su operación, establecer las características de la interfaz y descubrir las restricciones adicionales del diseño.</li>
+<li><strong>3. Modelado:</strong> Construir modelos gráficos y textuales (de datos, funcionales y de comportamiento) para comprender mejor el flujo de datos y el control antes de especificar.</li>
+<li><strong>4. Especificación:</strong> Redactar formalmente el documento de Especificación de Requisitos de Software (ERS / SRS).</li>
+<li><strong>5. Revisión:</strong> Evaluar junto con el cliente y mediante una Revisión Técnica Formal (RTF) que los requisitos sean completos, consistentes y verificables.</li>
+</ol>
+<h4>Técnicas de Obtención de Requisitos (Comunicación con el Cliente)</h4>
+<p>Durante la comunicación inicial suelen presentarse tres obstáculos clásicos: problemas de <strong>ámbito</strong> (la frontera del sistema está mal definida), problemas de <strong>comprensión</strong> (los usuarios no tienen completamente claro qué necesitan o omiten conocimiento que dan por obvio) y problemas de <strong>volatilidad</strong> (los requisitos cambian con el tiempo). Para superarlos se aplican cuatro técnicas:</p>
+<ul>
+<li><strong>Entrevistas libres de contexto:</strong> Comienzan con preguntas de alto nivel independientes del dominio técnico: <em>¿Quién solicita este trabajo?, ¿Quién utilizará la solución?, ¿Cuál será el beneficio económico de una buena solución?, ¿Qué problemas resuelve y qué datos de salida visibles necesita el usuario?</em></li>
+<li><strong>Técnicas Facilitadas de Especificación de Aplicaciones (FAST):</strong> Reuniones conjuntas estructuradas en un lugar neutral entre desarrolladores y clientes donde se elaboran listas consensuadas de <em>objetos del entorno</em>, <em>servicios (funciones) que operan sobre esos objetos</em> y <em>restricciones</em>, además de criterios de validación.</li>
+<li><strong>Despliegue de la Función de Calidad (QFD — Quality Function Deployment):</strong> Técnica de gestión de calidad que traduce las necesidades del cliente en requisitos técnicos del software, clasificándolos en tres categorías:
+                        <ul>
+<li><em>Requisitos normales:</em> Los objetivos y funciones que el cliente declara explícitamente durante las reuniones (si están presentes, el cliente queda satisfecho).</li>
+<li><em>Requisitos esperados:</em> Son tan fundamentales e implícitos que el cliente ni siquiera los menciona (por ejemplo, que el sistema no borre datos al presionar Enter o que sea fácil de instalar); su ausencia causa profunda insatisfacción.</li>
+<li><em>Requisitos estimulantes (emocionantes):</em> Características que van más allá de las expectativas del cliente y resultan muy satisfactorias cuando están presentes (por ejemplo, autocompletado inteligente o exportación instantánea a Excel/PDF).</li>
+</ul>
+</li>
+<li><strong>Casos de Uso (Ivar Jacobson):</strong> Descripciones narrativas de escenarios que detallan cómo un <em>actor</em> (un rol específico de usuario o dispositivo externo) interactúa paso a paso con el software para lograr un objetivo concreto.</li>
+</ul>
+<h4>Los Cinco Principios Operativos del Análisis (Alan Davis)</h4>
+<p>Todos los métodos de análisis estructurado y orientado a objetos comparten cinco principios operativos fundamentales:</p>
+<ol>
+<li><strong>Debe representarse y comprenderse el dominio de la información de un problema:</strong> Incluye los datos que fluyen hacia adentro del sistema (usuarios, sensores, otros sistemas), los datos que fluyen hacia afuera y los almacenes de datos (bases de datos o archivos) que conservan la información permanentemente.</li>
+<li><strong>Deben definirse las funciones que debe realizar el software:</strong> El software transforma información realizando cálculos, comparaciones, validaciones y formateos.</li>
+<li><strong>Debe representarse el comportamiento del software (como consecuencia de acontecimientos externos):</strong> La mayoría del software responde a eventos del entorno (presionar un botón, vencimiento de un temporizador, lectura de un sensor).</li>
+<li><strong>Deben dividirse en forma jerárquica los modelos que representan información, función y comportamiento:</strong> La partición (<em>divide y vencerás</em>) reduce la complejidad al ir de una visión global hacia niveles de detalle cada vez más específicos.</li>
+<li><strong>El proceso de análisis debe ir desde la información esencial hasta el detalle de la implementación:</strong> La <em>vista esencial</em> describe qué logra el sistema sin atarse a tecnologías específicas; la <em>vista de implementación</em> refleja cómo se llevará a cabo físicamente.</li>
+</ol>
+<div class="caja-ejemplo">
+<strong>Ejemplo práctico:</strong> En el análisis de una <em>Aplicación Móvil de Kitting Industrial</em>, un <strong>requisito normal</strong> es registrar entregas de material; un <strong>requisito esperado</strong> es que no permita guardar cantidades negativas; y un <strong>requisito estimulante (QFD)</strong> es que al escanear el código de barras de una bolsa sugiera automáticamente el cajón exacto y alerte si el lote está próximo a agotarse.
+                </div>
+<h4>Video Explicativo del Tema 2.1</h4>
+<div class="contenedor-video">
+<iframe allowfullscreen="" src="https://www.youtube-nocookie.com/embed/Hedi-Qobgbc" title="Análisis de Requisitos de Software"></iframe>
+<p class="pie-recurso">Fuente del video: Ingeniería de Software / Requisitos — <a href="https://www.youtube.com/watch?v=Hedi-Qobgbc" target="_blank">https://www.youtube.com/watch?v=Hedi-Qobgbc</a></p>
+</div>
+<!-- Actividad Interactiva 2.1 -->
+
+<div class="caja-bibliografia">
+<strong>Fuente bibliográfica (APA 7):</strong> Davis, A. M. (1993). <em>Software Requirements: Objects, Functions, and States</em>. Prentice Hall. · Pressman, R. S. (2010). <em>Ingeniería del software</em> (7.ª ed., Cap. 5). McGraw-Hill.
+                </div>
+</div>
+</div>
+<!-- SUBTEMA 2.2 DETALLADO -->
+<div class="seccion-subtema subtema-u2" id="u2-t2">
+<div class="tarjeta">
+<h3>2.2 Identificación del problema, ámbito y descomposición del software</h3>
+<p>
+                    La primera actividad tanto del análisis como de la planificación de un proyecto de software es la determinación del <strong>ámbito del software</strong>. Sin un ámbito acotado e inequívoco es imposible realizar estimaciones ni diseñar una arquitectura coherente.
+                </p>
+<h4>Componentes que Definen el Ámbito del Software</h4>
+<ul>
+<li><strong>1. Contexto:</strong> ¿Cómo encaja el software a construir dentro de un sistema mayor, producto o contexto de negocio, y qué restricciones le impone dicho contexto?</li>
+<li><strong>2. Objetivos de información:</strong> ¿Qué objetos de datos visibles para el cliente se producen como salida del software y qué objetos de datos son necesarios como entrada?</li>
+<li><strong>3. Función y rendimiento:</strong> ¿Qué funciones realizará el software para transformar los datos de entrada en datos de salida, y qué características especiales de rendimiento (velocidad de respuesta, capacidad de procesamiento, memoria o fiabilidad) deben cumplirse?</li>
+</ul>
+<h4>El Estudio de Viabilidad (Cuatro Dimensiones)</h4>
+<p>Una vez delimitado el ámbito inicial, antes de comprometer recursos humanos y financieros se realiza un <strong>estudio de viabilidad</strong> que responde cuatro preguntas críticas:</p>
+<div class="tabla-contenedor">
+<table class="tabla-datos">
+<thead>
+<tr><th>Dimensión de Viabilidad</th><th>Pregunta que Evalúa</th><th>Ejemplo de Análisis en un Proyecto</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>1. Viabilidad Técnica</strong></td><td>¿Se puede construir el sistema con la tecnología, herramientas y conocimientos actuales?</td><td>Verificar si el lector láser industrial es compatible con la API de .NET MAUI en Android.</td></tr>
+<tr><td><strong>2. Viabilidad Económica</strong></td><td>¿El beneficio económico o ahorro operativo supera el costo total de desarrollo y mantenimiento?</td><td>Comparar el costo del desarrollo contra el ahorro anual por reducción de desperdicio de material.</td></tr>
+<tr><td><strong>3. Viabilidad de Calendario</strong></td><td>¿Es realista entregar el sistema funcional antes de la fecha límite requerida por el negocio?</td><td>Evaluar si las 4 unidades o módulos pueden completarse dentro de las 16 semanas del semestre.</td></tr>
+<tr><td><strong>4. Viabilidad Legal / Operativa</strong></td><td>¿Cumple con normativas legales/licencias y será aceptado por los usuarios finales en su operación?</td><td>Cumplir la Ley de Protección de Datos Personales y usar licencias válidas o software libre.</td></tr>
+</tbody>
+</table>
+</div>
+<h4>Descomposición del Problema (Partición o Elaboración)</h4>
+<p>
+                    La <strong>descomposición del problema</strong> —también denominada partición o elaboración— es una actividad que se sienta en el núcleo del análisis de requisitos. Su propósito es dividir un problema complejo de gran escala en subproblemas o subfunciones más pequeñas que sean más fáciles de comprender, especificar y estimar individualmente. La descomposición se aplica en dos ejes simultáneos: (1) las <strong>funciones y datos</strong> que deben entregarse, y (2) las <strong>actividades del proceso</strong> que se emplearán para construir cada función.
+                </p>
+<!-- Actividad Interactiva 2.2 -->
+
+<h4>Video Explicativo del Tema 2.2</h4>
+<div class="contenedor-video">
+<iframe allowfullscreen="" src="https://www.youtube-nocookie.com/embed/wJtTp1UNAwM" title="Ámbito y Descomposición del Problema"></iframe>
+<p class="pie-recurso">Fuente del video: Universitat Politècnica de València (UPV) — <a href="https://www.youtube.com/watch?v=wJtTp1UNAwM" target="_blank">https://www.youtube.com/watch?v=wJtTp1UNAwM</a></p>
+</div>
+<div class="caja-bibliografia">
+<strong>Fuente bibliográfica (APA 7):</strong> Pressman, R. S. (2010). <em>Ingeniería del software: Un enfoque práctico</em> (7.ª ed., Caps. 5 y 24: Ámbito y descomposición del problema). McGraw-Hill.
+                </div>
+</div>
+</div>
+<!-- SUBTEMA 2.3 DETALLADO -->
+<div class="seccion-subtema subtema-u2" id="u2-t3">
+<div class="tarjeta">
+<h3>2.3 Elementos del modelo de análisis: Modelado de datos, funcional y del comportamiento</h3>
+<p>El <strong>modelo de análisis estructurado</strong> (propuesto por Tom DeMarco, Gane y Sarson, Edward Yourdon, y ampliado por Ward y Mellor para sistemas de tiempo real) tiene al <strong>Diccionario de Datos</strong> en el núcleo central y tres modelos concéntricos que representan las tres dimensiones del software:</p>
+<div class="tabla-contenedor">
+<table class="tabla-datos">
+<thead>
+<tr><th>Dimensión del Modelo</th><th>Pregunta que Responde</th><th>Diagrama Principal</th><th>Especificación Complementaria</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>1. Modelo de Datos</strong></td><td>¿Qué información maneja y almacena el software?</td><td>Diagrama Entidad-Relación (<strong>DER</strong>)</td><td>Diccionario de Datos (atributos y llaves)</td></tr>
+<tr><td><strong>2. Modelo Funcional</strong></td><td>¿Qué transformaciones aplica sobre los datos?</td><td>Diagrama de Flujo de Datos (<strong>DFD</strong>)</td><td>Especificación de Procesos (<strong>PSPEC</strong>)</td></tr>
+<tr><td><strong>3. Modelo de Comportamiento</strong></td><td>¿Cómo reacciona el sistema ante eventos externos?</td><td>Diagrama de Transición de Estados (<strong>DTE</strong>)</td><td>Especificación de Control (<strong>CSPEC</strong>)</td></tr>
+</tbody>
+</table>
+</div>
+<h4>1. Modelado de Datos (Diagrama Entidad-Relación — DER y Normalización)</h4>
+<p>El modelo de datos propuesto por Peter Chen define tres elementos esenciales:</p>
+<ul>
+<li><strong>Objetos de datos (Entidades):</strong> Representación de casi cualquier información compuesta (con varias propiedades diferentes) que el software debe entender: entidades externas, cosas (un reporte, un vehículo), sucesos (una venta, una llamada), roles (alumno, docente, operador), unidades organizativas (departamento, turno), lugares (almacén, sucursal) o estructuras (archivo, tabla).</li>
+<li><strong>Atributos:</strong> Definen las propiedades de un objeto de datos y cumplen una de tres funciones: (1) <em>nombrar</em> una ocurrencia del objeto, (2) <em>describir</em> la instancia, o (3) <em>hacer referencia</em> a otra instancia en otra tabla (llave foránea). Uno o más atributos se definen como <strong>identificador (clave primaria)</strong>.</li>
+<li><strong>Relaciones (Cardinalidad y Modalidad):</strong> Conectan los objetos de datos entre sí:
+                        <ul>
+<li><strong>Cardinalidad (1:1, 1:N, M:N):</strong> Especifica el número máximo de ocurrencias de un objeto que se relacionan con una ocurrencia de otro (<em>Uno a uno 1:1</em> como Empleado–CajónAsignado; <em>Uno a muchos 1:N</em> como Cliente–Pedidos; <em>Muchos a muchos M:N</em> como Pedido–Productos, la cual siempre se resuelve creando una entidad asociativa intermedia como <code>DetallePedido</code>).</li>
+<li><strong>Modalidad (0 o 1):</strong> Vale <strong>1 (obligatoria)</strong> si una ocurrencia de la relación es indispensable (un pedido no puede existir sin un cliente), y vale <strong>0 (opcional)</strong> si puede no existir (un cliente recién registrado puede tener cero pedidos).</li>
+</ul>
+</li>
+</ul>
+<p><strong>Las 3 Formas Normales (Normalización de Codd):</strong> (1) <strong>1FN:</strong> Todos los atributos son atómicos (sin grupos repetitivos ni listas en una misma celda); (2) <strong>2FN:</strong> Está en 1FN y todo atributo no clave depende funcionalmente de la clave primaria completa (sin dependencias parciales); (3) <strong>3FN:</strong> Está en 2FN y ningún atributo no clave depende transitivamente de otro atributo no clave.</p>
+<h4>2. Modelado Funcional y Flujo de Información (DFD y PSPEC)</h4>
+<p>El <strong>Diagrama de Flujo de Datos (DFD)</strong> muestra cómo la información entra al sistema, se transforma a través de una serie de procesos y sale convertida en resultados. Utiliza cuatro símbolos gráficos:</p>
+<div class="tabla-contenedor">
+<table class="tabla-datos">
+<thead>
+<tr><th>Elemento del DFD</th><th>Símbolo Gráfico</th><th>Regla de Nomenclatura</th><th>Función en el Modelo</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>Proceso (Transformador)</strong></td><td>Círculo o burbuja (Yourdon) / Rectángulo redondeado (Gane-Sarson)</td><td><strong>Verbo activo + Objeto</strong> (ej. <em>«Validar pedido»</em>, <em>«Calcular salario neto»</em>)</td><td>Transforma flujos de datos de entrada en flujos de salida.</td></tr>
+<tr><td><strong>Flujo de Datos</strong></td><td>Flecha con dirección</td><td><strong>Sustantivo singular</strong> (ej. <em>«datos_empleado»</em>, <em>«factura_emitida»</em>)</td><td>Tubería por la que viajan paquetes de información conocida.</td></tr>
+<tr><td><strong>Almacén de Datos</strong></td><td>Dos líneas horizontales paralelas</td><td><strong>Sustantivo en plural</strong> (ej. <em>«D1: Clientes»</em>, <em>«D2: Inventario»</em>)</td><td>Repositorio pasivo de datos que son leídos o actualizados por procesos.</td></tr>
+<tr><td><strong>Entidad Externa</strong></td><td>Rectángulo o cuadrado</td><td><strong>Sustantivo / Rol</strong> (ej. <em>«Cliente»</em>, <em>«Banco»</em>, <em>«Sensor»</em>)</td><td>Productor o consumidor de información que reside fuera de los límites del software.</td></tr>
+</tbody>
+</table>
+</div>
+<p><strong>Refinamiento por niveles y Regla del Equilibrio:</strong> El DFD de <strong>Nivel 0 (Diagrama de Contexto)</strong> representa todo el sistema como una única burbuja central conectada con las entidades externas. Luego esa burbuja se descompone en el <strong>Nivel 1</strong> (de 3 a 7 procesos principales), y cada burbuja compleja se refina en un <strong>Nivel 2</strong> (numerados 1.1, 1.2, 1.3...). La <strong>Regla del Equilibrio (Balanceo)</strong> exige que todos los flujos de datos que entran y salen de una burbuja padre aparezcan exactamente iguales entrando y saliendo del diagrama hijo refinado. Deben evitarse errores comunes como «procesos milagro» (salidas sin ninguna entrada) o «agujeros negros» (entradas sin ninguna salida). Cada burbuja primitiva (que ya no se subdivide) se documenta mediante una <strong>Especificación de Proceso (PSPEC)</strong> en pseudocódigo, narrativa o tabla de decisión.</p>
+<h4>3. Modelado del Comportamiento (DTE y CSPEC)</h4>
+<p>El <strong>Diagrama de Transición de Estados (DTE)</strong> representa el comportamiento dinámico del sistema a lo largo del tiempo modelando:</p>
+<ul>
+<li><strong>Estados (rectángulos o círculos):</strong> Modos observables de comportamiento en los que el sistema espera algún suceso (ej. en un Cajero Automático: <em>En Espera</em>, <em>Validando PIN</em>, <em>Mostrando Menú</em>, <em>Dispensando Efectivo</em>, <em>Tarjeta Retenida</em>).</li>
+<li><strong>Eventos y Acciones (flechas de transición):</strong> Cada flecha que conecta dos estados se etiqueta con el formato <code>Evento que ocurre [Condición] / Acción que ejecuta el sistema</code> (por ejemplo: <code>PIN incorrecto [intentos == 3] / Bloquear cuenta y retener tarjeta</code>).</li>
+<li><strong>Especificación de Control (CSPEC):</strong> Incluye el DTE y la <em>Tabla de Activación de Procesos (PAT)</em>, que indica qué procesos del DFD se habilitan o deshabilitan cuando el sistema entra en determinado estado.</li>
+</ul>
+<div class="contenedor-diagrama">
+<img alt="Estructura del Modelo de Análisis" src="imagenes/diagrama_unidad2.svg" style="max-width:580px; width:100%;"/>
+<p class="pie-recurso">Figura 2.1: Estructura del modelo de análisis estructurado. Fuente: DeMarco, T. (1979) y Pressman, R. S. (2010).</p>
+</div>
+<!-- Actividad Interactiva 2.3 -->
+
+<h4>Video Explicativo del Tema 2.3</h4>
+<div class="contenedor-video">
+<iframe allowfullscreen="" src="https://www.youtube-nocookie.com/embed/o1duC8IOKBs" title="Diagramas de Flujo de Datos DFD"></iframe>
+<p class="pie-recurso">Fuente del video: Modelado de Sistemas Estructurados — <a href="https://www.youtube.com/watch?v=o1duC8IOKBs" target="_blank">https://www.youtube.com/watch?v=o1duC8IOKBs</a></p>
+</div>
+<div class="caja-bibliografia">
+<strong>Fuente bibliográfica (APA 7):</strong> DeMarco, T. (1979). <em>Structured Analysis and System Specification</em>. Yourdon Press. · Chen, P. P. (1976). The Entity-Relationship Model. <em>ACM TODS</em>, 1(1), 9–36.
+                </div>
+</div>
+</div>
+<!-- SUBTEMA 2.4 DETALLADO -->
+<div class="seccion-subtema subtema-u2" id="u2-t4">
+<div class="tarjeta">
+<h3>2.4 Técnicas de análisis estructurado y documentación de requisitos (DD y ERS IEEE 830)</h3>
+<h4>1. El Diccionario de Datos (DD)</h4>
+<p>El <strong>Diccionario de Datos</strong> es un listado organizado de todos los elementos de datos pertinentes al sistema, con definiciones precisas y rigurosas para que tanto el usuario como el analista tengan una comprensión común de todas las entradas, salidas, componentes de almacenes y cálculos intermedios. Cada entrada del diccionario registra: <strong>Nombre del elemento</strong>, <strong>Alias (sinónimos)</strong>, <strong>Dónde y cómo se usa</strong> (qué procesos del DFD lo leen o escriben), <strong>Descripción de su contenido</strong> (usando notación algebraica) e <strong>Información suplementaria</strong> (valores por defecto, rangos permitidos, longitud y tipo de dato).</p>
+<div class="tabla-contenedor">
+<table class="tabla-datos">
+<thead>
+<tr><th>Constructo de Datos</th><th>Símbolo en el Diccionario</th><th>Significado Formal</th></tr>
+</thead>
+<tbody>
+<tr><td>Definición</td><td><strong><code>=</code></strong></td><td>«Está compuesto de» o «es equivalente a».</td></tr>
+<tr><td>Secuencia (Concatenación)</td><td><strong><code>+</code></strong></td><td>«Y» (un elemento seguido de otro elemento).</td></tr>
+<tr><td>Selección (Decisión)</td><td><strong><code>[   |   ]</code></strong></td><td>«O» (elegir exactamente una de las opciones encerradas entre corchetes).</td></tr>
+<tr><td>Repetición (Iteración)</td><td><strong><code>1{ ... }n</code></strong></td><td>El elemento entre llaves se repite desde un límite inferior (1) hasta un límite superior (n).</td></tr>
+<tr><td>Dato Opcional</td><td><strong><code>( ... )</code></strong></td><td>El dato encerrado entre paréntesis puede estar presente o ausente.</td></tr>
+<tr><td>Comentario</td><td><strong><code>* ... *</code></strong></td><td>Nota aclaratoria sobre restricciones o formato del dato.</td></tr>
+</tbody>
+</table>
+</div>
+<div class="caja-formula">
+Ejemplo completo en el Diccionario de Datos:
+Orden_Entrega_Material = folio_entrega + fecha_hora + id_operador + [Turno_Matutino | Turno_Vespertino | Turno_Nocturno] + 1{Renglon_Material}20 + (observaciones)
+Renglon_Material       = numero_parte + descripcion + cantidad_entregada + id_cajon * cantidad_entregada &gt; 0 *
+                </div>
+<p><strong>Validación cruzada del modelo:</strong> Todo almacén del DFD debe corresponder a una entidad o agrupación del DER, y todo flujo y atributo debe estar declarado en el Diccionario de Datos.</p>
+<h4>2. La Especificación de Requisitos de Software (ERS / SRS según IEEE Std 830 e ISO/IEC/IEEE 29148)</h4>
+<p>La <strong>Especificación de Requisitos de Software (ERS)</strong> es el documento oficial que se produce al concluir el análisis. Según el estándar <strong>IEEE Std 830</strong>, una buena ERS debe cumplir <strong>7 cualidades indispensables</strong>:</p>
+<ol>
+<li><strong>Correcta:</strong> Todo requisito incluido representa algo que realmente se requiere del sistema a construir.</li>
+<li><strong>No ambigua:</strong> Cada requisito tiene una única interpretación posible para cualquier lector.</li>
+<li><strong>Completa:</strong> Incluye todos los requisitos significativos (funcionales, rendimiento, interfaces y respuestas ante entradas válidas e inválidas).</li>
+<li><strong>Consistente:</strong> Ningún subconjunto de requisitos entra en contradicción lógica o terminológica con otro.</li>
+<li><strong>Clasificada por importancia y estabilidad:</strong> Identifica cuáles requisitos son esenciales, condicionales u opcionales.</li>
+<li><strong>Verificable:</strong> Existe un proceso finito y económico (una prueba o demostración cuantitativa) para comprobar que el software cumple el requisito (evitar frases vagas como «el sistema será amigable»).</li>
+<li><strong>Modificable y Trazable:</strong> Su estructura permite realizar cambios controlados y cada requisito tiene un identificador único (<code>RF-01</code>, <code>RNF-01</code>) que permite rastrear su origen y vincularlo con los módulos de diseño y casos de prueba.</li>
+</ol>
+<h4>Estructura Estándar de un Documento ERS (Esquema IEEE 830 / Pressman)</h4>
+<ul>
+<li><strong>Capítulo 1. Introducción:</strong> Propósito del documento, ámbito del producto, definiciones/acrónimos, referencias y visión general.</li>
+<li><strong>Capítulo 2. Descripción General (y de la Información):</strong> Perspectiva del producto, funciones generales, características de los usuarios, restricciones, diagramas de contexto, modelo de datos (DER) y diccionario de datos.</li>
+<li><strong>Capítulo 3. Requisitos Específicos (Funcionales, de Interfaz y Comportamiento):</strong> Especificación detallada de cada función con entradas, procesamiento y salidas (DFD, PSPEC), interfaces externas (usuario, hardware, software, comunicaciones), comportamiento (DTE) y atributos de calidad (seguridad, disponibilidad, mantenibilidad).</li>
+<li><strong>Capítulo 4. Criterios de Validación y Aceptación:</strong> Límites de rendimiento, clases de pruebas exigidas y condiciones bajo las cuales el cliente dará por aceptado el sistema.</li>
+<li><strong>Capítulo 5. Bibliografía y Apéndices.</strong></li>
+</ul>
+<!-- Actividad Interactiva 2.4 -->
+
+<h4>Video Explicativo del Tema 2.4</h4>
+<div class="contenedor-video">
+<iframe allowfullscreen="" src="https://www.youtube-nocookie.com/embed/ZUVDkSXRt5I" title="Norma IEEE 830 ERS"></iframe>
+<p class="pie-recurso">Fuente del video: Documentación de Software ERS — <a href="https://www.youtube.com/watch?v=ZUVDkSXRt5I" target="_blank">https://www.youtube.com/watch?v=ZUVDkSXRt5I</a></p>
+</div>
+<div class="caja-bibliografia">
+<strong>Fuente bibliográfica (APA 7):</strong> IEEE Computer Society. (1998). <em>IEEE Std 830-1998: IEEE Recommended Practice for Software Requirements Specifications</em>. · ISO/IEC/IEEE 29148:2018.
+                </div>
+</div>
+</div>
+<!-- CUESTIONARIO DE LA UNIDAD II -->
+<div class="seccion-subtema subtema-u2" id="u2-quiz">
+<div class="tarjeta">
+<h3>Autoevaluación Interactiva de la Unidad II</h3>
+<p>Responde las siguientes 5 preguntas sobre Análisis y Modelado de Requisitos:</p>
+<div id="contenedorQuizU2"></div>
+</div>
+</div>
+</main>
+<!-- PIE DE PÁGINA INSTITUCIONAL Y DATOS DEL EQUIPO -->
+<footer class="pie-pagina">
+<div class="pie-contenedor">
+<div>
+<strong>Proyecto Final — Ingeniería de Software (Noviembre 2026)</strong><br/>
+                Universidad Autónoma de Coahuila (UAdeC) · Facultad de Ingeniería Mecánica y Eléctrica (FIME)<br/>
+                Docente: M.I. Liliana Guadalupe Alonso Sánchez · 7° Semestre, Sección C, Carrera: ISC
+            </div>
+<div>
+<strong>Integrantes del Equipo:</strong><br/>
+                1. Axel Gabriel Sifuentes Hernández (<a href="mailto:axelsifuentes@uadec.edu.mx">axelsifuentes@uadec.edu.mx</a>)<br/>
+                2. Miguel Ángel Andrade de los Santos (<a href="mailto:miguelandrade@uadec.edu.mx">miguelandrade@uadec.edu.mx</a>)<br/>
+                Redes: <a href="https://www.facebook.com/share/18JKcGhgsj/" target="_blank">Facebook</a> |
+                <a href="https://www.instagram.com/axel.gsh?srtk=MThwaTBlMThrd2VkaQ==" target="_blank">Instagram</a> |
+                <a href="https://www.tiktok.com/@gsh_axel?_r=1&amp;_t=ZT-9At7OpCqkCk" target="_blank">TikTok</a>
+</div>
+</div>
+</footer>
+<script src="js/funciones.js"></script>
+<script src="js/analisis.js"></script>
+<script src="js/cuestionarios.js"></script>
+</body>
+</html>

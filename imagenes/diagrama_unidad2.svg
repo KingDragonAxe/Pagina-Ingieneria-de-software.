@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 220" width="100%" height="220">
+  <rect width="600" height="220" fill="#f8fafc" stroke="#cbd5e1" rx="8"/>
+  <text x="300" y="25" text-anchor="middle" fill="#1e3a8a" font-family="Arial" font-size="14" font-weight="bold">Elementos del Modelo de Análisis Estructurado (Fuente: DeMarco / Pressman)</text>
+  <circle cx="300" cy="115" r="46" fill="#1e3a8a" stroke="#2563eb" stroke-width="2"/>
+  <text x="300" y="112" text-anchor="middle" fill="#ffffff" font-family="Arial" font-size="11" font-weight="bold">Diccionario</text>
+  <text x="300" y="126" text-anchor="middle" fill="#fef08a" font-family="Arial" font-size="11" font-weight="bold">de Datos (DD)</text>
+  <rect x="35" y="55" width="160" height="45" fill="#2563eb" rx="5"/>
+  <text x="115" y="75" text-anchor="middle" fill="#fff" font-family="Arial" font-size="11" font-weight="bold">Modelo de Datos</text>
+  <text x="115" y="90" text-anchor="middle" fill="#dbeafe" font-family="Arial" font-size="10">Diagrama E-R (DER)</text>
+  <rect x="405" y="55" width="160" height="45" fill="#2563eb" rx="5"/>
+  <text x="485" y="75" text-anchor="middle" fill="#fff" font-family="Arial" font-size="11" font-weight="bold">Modelo Funcional</text>
+  <text x="485" y="90" text-anchor="middle" fill="#dbeafe" font-family="Arial" font-size="10">DFD + PSPEC</text>
+  <rect x="210" y="170" width="180" height="40" fill="#047857" rx="5"/>
+  <text x="300" y="188" text-anchor="middle" fill="#fff" font-family="Arial" font-size="11" font-weight="bold">Modelo de Comportamiento</text>
+  <text x="300" y="202" text-anchor="middle" fill="#d1fae5" font-family="Arial" font-size="10">DTE + CSPEC</text>
+  <line x1="195" y1="80" x2="256" y2="100" stroke="#1e3a8a" stroke-width="2"/>
+  <line x1="405" y1="80" x2="344" y2="100" stroke="#1e3a8a" stroke-width="2"/>
+  <line x1="300" y1="161" x2="300" y2="170" stroke="#1e3a8a" stroke-width="2"/>
+</svg>

@@ -1,0 +1,50 @@
+========================================================================
+ÍNDICE DE RECURSOS AUDIOVISUALES IDENTIFICADOS CON SU FUENTE
+Plataforma Web Interactiva para el Aprendizaje de Ingeniería de Software
+========================================================================
+
+UNIDAD I. FUNDAMENTOS DE LA INGENIERÍA DE SOFTWARE Y DEL PROCESO
+- Tema 1.1: ¿Qué hacen realmente los Ingenieros de Software? (Capas y Herramientas)
+  URL: https://www.youtube.com/watch?v=fXBG8ZAaBKI | Fuente: Canal Informático / YouTube Educación
+- Tema 1.2: Fundamentos y Visión General de la Ingeniería de Software
+  URL: https://www.youtube.com/watch?v=JM_1zpd5E44 | Fuente: Ingeniería de Software Académica
+- Tema 1.3: Modelos de Desarrollo de Software (Cascada, Prototipos y 4GL)
+  URL: https://www.youtube.com/watch?v=3d9hCL8Nn0E | Fuente: TodoCode / Formación en Ingeniería
+- Tema 1.4: Jerarquía de la Ingeniería de Sistemas e Ingeniería de la Información
+  URL: https://www.youtube.com/watch?v=UUsNCcoM3e4 | Fuente: Cátedra de Ingeniería de Sistemas
+
+UNIDAD II. ANÁLISIS Y MODELADO DE REQUISITOS
+- Tema 2.1: Ingeniería de Requerimientos: Obtención y Principios del Análisis
+  URL: https://www.youtube.com/watch?v=Hedi-Qobgbc | Fuente: Ingeniería de Software / Requisitos
+- Tema 2.2: Ámbito del Software y Descomposición del Problema
+  URL: https://www.youtube.com/watch?v=wJtTp1UNAwM | Fuente: Universitat Politècnica de València (UPV)
+- Tema 2.3: Elementos del Modelo de Análisis: DER, DFD y DTE
+  URL: https://www.youtube.com/watch?v=o1duC8IOKBs | Fuente: Modelado de Sistemas Estructurados
+- Tema 2.4: Técnicas de Análisis Estructurado, Diccionario de Datos y Norma IEEE 830
+  URL: https://www.youtube.com/watch?v=ZUVDkSXRt5I | Fuente: Documentación de Software ERS
+
+UNIDAD III. GESTIÓN, PLANIFICACIÓN Y CALIDAD DE PROYECTOS DE SOFTWARE
+- Tema 3.1: Gestión de Proyectos (4 P's), Estimación y Modelo COCOMO
+  URL: https://www.youtube.com/watch?v=gLBiAwmDdzk | Fuente: Gestión de Proyectos de Software
+- Tema 3.2: Métricas del Proceso, Puntos de Función (PF) y Calidad
+  URL: https://www.youtube.com/watch?v=apTIvDk2u7c | Fuente: Métricas y Estimación IFPUG
+- Tema 3.3: Gestión de Riesgos: Estrategias Proactivas, Reactivas y Exposición (RE)
+  URL: https://www.youtube.com/watch?v=gnnssd_uVJc | Fuente: Gestión de Riesgos en TI
+- Tema 3.4: Control de Calidad (SQA) y Revisiones Técnicas Formales (RTF)
+  URL: https://www.youtube.com/watch?v=TdMMRVrwRJk | Fuente: Universidad Católica San Antonio de Murcia (UCAM)
+- Tema 3.5: Gestión de la Configuración del Software (GCS) y Control de Versiones
+  URL: https://www.youtube.com/watch?v=bn6lAO6p95k | Fuente: Ingeniería de Configuración y Versiones
+
+UNIDAD IV. DISEÑO Y PRUEBAS DEL SOFTWARE
+- Tema 4.1: Conceptos y Principios del Diseño (Abstracción, Modularidad, Cohesión y Acoplamiento)
+  URL: https://www.youtube.com/watch?v=okL_O0jpQYQ | Fuente: Arquitectura y Diseño Modular
+- Tema 4.2: Modelado y Documentación del Diseño (Estándar IEEE 1016)
+  URL: https://www.youtube.com/watch?v=Qv9WhqxnOvw | Fuente: Ingeniería de Diseño de Software
+- Tema 4.3: Métodos de Diseño: Datos, Arquitectónico, Interfaz Hombre-Máquina y Procedimental
+  URL: https://www.youtube.com/watch?v=Z1QzSqFryPY | Fuente: Diseño de Interfaces y Sistemas
+- Tema 4.4: Fundamentos y Métodos de Prueba del Software (Verificación vs. Validación)
+  URL: https://www.youtube.com/watch?v=onuiC6BQuOY | Fuente: Testing y QA de Software
+- Tema 4.5: Diseño de Casos de Prueba (Partición de Equivalencia y Valores Límite)
+  URL: https://www.youtube.com/watch?v=f4Rt26hoeFY | Fuente: Ingeniería de Pruebas Funcionales
+- Tema 4.6: Pruebas de Caja Blanca, Complejidad Ciclomática de McCabe y Estructura de Control
+  URL: https://www.youtube.com/watch?v=GVegCwwfBZ0 | Fuente: Pruebas Estructurales de Software

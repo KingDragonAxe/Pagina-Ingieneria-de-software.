@@ -1,0 +1,3 @@
+ID: 1 | Nombre: Axel Gabriel Sifuentes Hernández | Email: axel_gsh@outlook.com | Contraseña: 123456 | Rol: Estudiante ISC - 7C
+ID: 2 | Nombre: Miguel Ángel Andrade de los Santos | Email: miguel.andrade@uadec.edu.mx | Contraseña: 123456 | Rol: Estudiante ISC - 7C
+ID: 3 | Nombre: M.I. Liliana Guadalupe Alonso Sánchez | Email: liliana.alonso@uadec.edu.mx | Contraseña: 123456 | Rol: Docente Titular

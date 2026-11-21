@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Unidad I: Fundamentos y Proceso | Ingeniería de Software UAdeC FIME</title>
+<link href="css/estilos.css" rel="stylesheet"/>
+</head>
+<body>
+<!-- ENCABEZADO SUPERIOR LIMPIO (Sin el cuadro repetido de materia/docente y con botón circular de tema) -->
+<header class="encabezado-uadec">
+<div class="encabezado-contenedor">
+<a class="marca-uadec" href="index.html">
+<div class="icono-logo">&lt;/&gt;</div>
+<div class="titulo-sitio">
+<h1>UNIVERSIDAD AUTÓNOMA DE COAHUILA — FIME</h1>
+<p>Ingeniería de Software &amp; Gestión de Proyectos · Informe Educativo 2026</p>
+</div>
+</a>
+<div class="controles-superiores">
+<span class="pildora-sesion" id="etiquetaUsuarioActivo">Sin sesión iniciada</span>
+<button class="btn-modo-tema" onclick="cambiarModoTema()" title="Cambiar entre modo claro y oscuro" type="button"><i class="fa-solid fa-moon"></i></button>
+<button class="boton boton-rojo" id="btnCerrarSesion" onclick="cerrarSesion()" style="display:none;" type="button">Cerrar Sesión</button>
+</div>
+</div>
+</header>
+<!-- BARRA DE NAVEGACIÓN PRINCIPAL -->
+<nav class="barra-navegacion">
+<div class="menu-contenedor">
+<ul class="menu-lista">
+<li><a href="index.html" id="nav-btn-inicio">Inicio</a></li>
+<li><a class="activo" href="unidad1.html" id="nav-btn-u1" onclick="return abrirUnidad('unidad1.html', 'pagina-u1')">Unidad I: Fundamentos y Proceso</a></li>
+<li><a href="unidad2.html" id="nav-btn-u2" onclick="return abrirUnidad('unidad2.html', 'pagina-u2')">Unidad II: Análisis y Modelado</a></li>
+<li><a href="unidad3.html" id="nav-btn-u3" onclick="return abrirUnidad('unidad3.html', 'pagina-u3')">Unidad III: Gestión, Planificación y Calidad</a></li>
+<li><a href="unidad4.html" id="nav-btn-u4" onclick="return abrirUnidad('unidad4.html', 'pagina-u4')">Unidad IV: Diseño y Pruebas</a></li>
+</ul>
+</div>
+</nav>
+<main class="contenedor-principal">
+<div class="caja-alerta alerta-error" id="avisoSesionEnUnidad" style="display:none;">
+            Aviso: No has iniciado sesión. <a href="index.html">Regresa a Inicio para iniciar sesión</a>.
+        </div>
+<div class="panel-portada">
+<h2>UNIDAD I. FUNDAMENTOS DE LA INGENIERÍA DE SOFTWARE Y DEL PROCESO</h2>
+<p>Estudio exhaustivo de las cuatro capas tecnológicas, la tecnología de procesos, las características singulares del producto software frente al hardware, los mitos de gestión/cliente/desarrollo, el marco común de proceso, los 5 niveles CMMI, los modelos de proceso (Cascada, Prototipos, 4GL y panorama comparativo) y la ingeniería de sistemas e información (PEI, BAA y arquitectura Hatley-Pirbhai).</p>
+</div>
+<!-- PESTAÑAS DE NAVEGACIÓN DE LA UNIDAD I -->
+<div class="barra-subtemas">
+<button class="boton-subtema activo" onclick="mostrarSubtema('subtema-u1', 'u1-t1', this)" type="button">1.1 Introducción y Capas</button>
+<button class="boton-subtema" onclick="mostrarSubtema('subtema-u1', 'u1-t2', this)" type="button">1.2 El Producto y el Proceso</button>
+<button class="boton-subtema" onclick="mostrarSubtema('subtema-u1', 'u1-t3', this)" type="button">1.3 Modelos del Proceso</button>
+<button class="boton-subtema" onclick="mostrarSubtema('subtema-u1', 'u1-t4', this)" type="button">1.4 Ingeniería de Sistemas e Información</button>
+<button class="boton-subtema" onclick="mostrarSubtema('subtema-u1', 'u1-quiz', this)" type="button">Cuestionario Unidad I</button>
+</div>
+<!-- SUBTEMA 1.1 DETALLADO -->
+<div class="seccion-subtema subtema-u1 activo" id="u1-t1">
+<div class="tarjeta">
+<h3>1.1 Introducción a la Ingeniería de Software: conceptos, procesos, métodos y herramientas</h3>
+<p>
+                    La <strong>Ingeniería de Software</strong> se define formalmente (según el estándar <strong>IEEE</strong> y <em>Roger S. Pressman</em>) como la aplicación de un enfoque sistemático, disciplinado y cuantificable al desarrollo, operación y mantenimiento del software; es decir, la aplicación de la ingeniería al software. Fritz Bauer la definió como <em>«el establecimiento y uso de principios de ingeniería robustos orientados a obtener económicamente software que sea fiable y que funcione de manera eficiente sobre máquinas reales»</em>.
+                </p>
+<h4>Las Cuatro Capas de la Ingeniería de Software</h4>
+<p>La ingeniería de software es una tecnología multicapa en la que cada nivel descansa sobre el anterior; si falla uno de los niveles inferiores, las capas superiores pierden eficacia:</p>
+<ul>
+<li><strong>1. Enfoque de calidad (El cimiento):</strong> Cualquier enfoque de ingeniería debe sustentarse sobre un compromiso organizacional con la calidad total (<em>Total Quality Management — TQM</em>) y la filosofía de mejora continua (<em>Kaizen</em>). Sin disciplina de calidad, el resto de las capas carece de base sólida.</li>
+<li><strong>2. Capa del Proceso:</strong> Es el pegamento que mantiene unidas las capas tecnológicas y permite un desarrollo racional y oportuno. Define el marco de trabajo con las áreas clave de proceso (KPA) para establecer los hitos, productos entregables (documentos, modelos, código, datos), puntos de control de calidad y gestión de cambios.</li>
+<li><strong>3. Capa de los Métodos:</strong> Proporcionan el <em>«cómo»</em> técnico para construir el software. Abarcan una amplia gama de tareas que incluyen comunicación con el cliente, análisis y modelado de requisitos, diseño de estructuras de datos y arquitectura, construcción de programas, pruebas de verificación y mantenimiento.</li>
+<li><strong>4. Capa de las Herramientas:</strong> Suministran un soporte automatizado o semiautomatizado para el proceso y para los métodos. Cuando las herramientas se integran de modo que la información creada por una herramienta puede ser utilizada directamente por otra, se establece un sistema <strong>CASE</strong> (<em>Computer-Aided Software Engineering</em> — Ingeniería de Software Asistida por Computadora).</li>
+</ul>
+<div class="tabla-contenedor">
+<table class="tabla-datos">
+<thead>
+<tr><th>Capa Tecnológica</th><th>Pregunta Fundamental que Responde</th><th>Ejemplos en un Proyecto Real</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>1. Compromiso de Calidad</strong></td><td>¿Qué estándar de excelencia guía a la organización?</td><td>Cultura de cero defectos, ISO 9001, mejora continua PDCA.</td></tr>
+<tr><td><strong>2. Proceso</strong></td><td>¿Qué actividades debemos realizar y en qué orden?</td><td>Modelo en cascada, prototipos, incremental, espiral o Scrum.</td></tr>
+<tr><td><strong>3. Métodos</strong></td><td>¿Cómo se ejecuta técnicamente cada actividad?</td><td>Análisis estructurado (DER, DFD, DTE), diseño modular, pruebas McCabe.</td></tr>
+<tr><td><strong>4. Herramientas</strong></td><td>¿Con qué software automatizamos y reducimos errores?</td><td>Entornos CASE, Visual Studio, SQL Server, Git/GitHub, analizadores estáticos.</td></tr>
+</tbody>
+</table>
+</div>
+<h4>Tecnología de Procesos</h4>
+<p>
+                    La <strong>tecnología de procesos</strong> consiste en herramientas automatizadas que ayudan a una organización a analizar su proceso actual, organizar sus tareas de trabajo, controlar y supervisar el avance y gestionar la calidad técnica. Permite pasar de un proceso «en la cabeza de las personas» a un flujo formalmente modelado, medible y repetible (vinculado a los niveles superiores del CMMI).
+                </p>
+<div class="caja-nota">
+<strong>Regla de oro de la ingeniería de software:</strong> Las herramientas caras sin un método ni un proceso adecuados solamente automatizan el caos y producen errores a mayor velocidad. No confundas los marcos de evaluación (como CMMI o ISO) con las herramientas de tecnología de procesos que automatizan el flujo de trabajo.
+                </div>
+<div class="contenedor-diagrama">
+<img alt="Diagrama de las 4 capas de la Ingeniería de Software" src="imagenes/diagrama_unidad1.svg" style="max-width:580px; width:100%;"/>
+<p class="pie-recurso">Figura 1.1: Las 4 capas de la Ingeniería de Software. Fuente: Adaptado de Pressman, R. S. (2021), Ingeniería del software: Un enfoque práctico.</p>
+</div>
+<div class="caja-ejemplo">
+<strong>Ejemplo práctico aplicado a un proyecto:</strong> En el desarrollo de un <em>Sistema de Control de Inventario y Corte Menor para una planta automotriz en Monclova</em>: el <strong>Enfoque de Calidad</strong> exige trazabilidad del 100% de los rollos de material; el <strong>Proceso</strong> divide el trabajo en entregas incrementales semanales; los <strong>Métodos</strong> emplean diagramas Entidad-Relación (<code>KittingBD</code>), normalización 3FN y pruebas de valores límite; y las <strong>Herramientas</strong> utilizadas son .NET MAUI / C#, SQL Server y Git.
+                </div>
+<div class="caja-repaso">
+<strong>Puntos clave para repasar (Tema 1.1):</strong>
+<ul>
+<li>Las 4 capas en orden ascendente: Calidad → Proceso → Métodos → Herramientas (CASE).</li>
+<li>El Proceso define el <em>qué y cuándo</em>; los Métodos definen el <em>cómo técnico</em>; las Herramientas brindan <em>automatización</em>.</li>
+</ul>
+</div>
+<h4>Video Explicativo del Tema 1.1</h4>
+<div class="contenedor-video">
+<iframe allowfullscreen="" src="https://www.youtube-nocookie.com/embed/fXBG8ZAaBKI" title="Introducción a la Ingeniería de Software"></iframe>
+<p class="pie-recurso">Fuente del video: Canal Informático / YouTube Educación — <a href="https://www.youtube.com/watch?v=fXBG8ZAaBKI" target="_blank">https://www.youtube.com/watch?v=fXBG8ZAaBKI</a></p>
+</div>
+<!-- Actividad Interactiva 1.1 -->
+
+<div class="caja-bibliografia">
+<strong>Fuente bibliográfica (APA 7):</strong> Pressman, R. S., &amp; Maxim, B. R. (2021). <em>Ingeniería del software: Un enfoque práctico</em> (9.ª ed., Cap. 1, pp. 12–18). McGraw-Hill Interamericana. · ISO/IEC/IEEE 12207:2017.
+                </div>
+</div>
+</div>
+<!-- SUBTEMA 1.2 DETALLADO -->
+<div class="seccion-subtema subtema-u1" id="u1-t2">
+<div class="tarjeta">
+<h3>1.2 El producto y el proceso del software</h3>
+<h4>¿Qué es formalmente el Producto Software?</h4>
+<p>El software es un elemento lógico (no físico) integrado por tres componentes inseparables:</p>
+<ol>
+<li><strong>Instrucciones (programas de computadora):</strong> que al ejecutarse proporcionan las características, función y grado de rendimiento deseados.</li>
+<li><strong>Estructuras de datos:</strong> que permiten a los programas manipular adecuadamente la información tanto en memoria como en bases de datos.</li>
+<li><strong>Documentos:</strong> que describen la arquitectura, la operación y el uso de los programas (especificaciones, manuales técnicos y de usuario).</li>
+</ol>
+<h4>Tres Características que Distinguen al Software del Hardware</h4>
+<ul>
+<li><strong>1. El software se desarrolla o se diseña; no se fabrica en el sentido clásico:</strong> En el hardware los costos se concentran en la línea de ensamblaje y materias primas; en el software todo el costo radica en la ingeniería y el diseño intelectual, ya que producir copias adicionales tiene costo prácticamente nulo.</li>
+<li><strong>2. El software no se «desgasta», pero sí se deteriora:</strong> El hardware sigue la llamada <em>curva de la bañera</em> (alta tasa de fallos infantiles al inicio, tasa baja durante su vida útil, y subida final por desgaste físico debido al polvo, vibración o calor). El software no es susceptible a los males ambientales que desgastan al hardware; sin embargo, durante su vida sufre múltiples cambios (mantenimiento). Cada cambio introduce la probabilidad de inyectar nuevos defectos, provocando picos en la tasa de fallos que deterioran progresivamente su estructura interna.</li>
+<li><strong>3. Aunque la industria tiende al ensamblaje de componentes, la mayoría del software aún se construye a medida:</strong> A diferencia de los circuitos electrónicos estandarizados con catálogos globales de repuestos, gran parte del software corporativo se diseña a la medida de las reglas de negocio de cada cliente.</li>
+</ul>
+<h4>Las 8 Categorías de Aplicaciones de Software</h4>
+<ul>
+<li><strong>Software de sistemas:</strong> Programas escritos para dar servicio a otros programas (sistemas operativos, compiladores, controladores de red).</li>
+<li><strong>Software de tiempo real:</strong> Mide, analiza y controla sucesos del mundo real conforme ocurren, con tiempos de respuesta estrictamente acotados (milisegundos).</li>
+<li><strong>Software de gestión / negocios:</strong> Procesamiento de información comercial (nóminas, cuentas por cobrar, inventarios, puntos de venta, ERP).</li>
+<li><strong>Software de ingeniería y científico:</strong> Caracterizado por algoritmos de cálculo numérico pesado («devoradores de números», CAD, simuladores físicos o astronómicos).</li>
+<li><strong>Software empotrado (embebido):</strong> Reside en la memoria interna de un producto industrial o de consumo para controlar sus funciones (frenos ABS de un vehículo, microondas, marcapasos).</li>
+<li><strong>Software de computadoras personales:</strong> Procesadores de texto, hojas de cálculo, diseño gráfico y entretenimiento.</li>
+<li><strong>Software basado en Web (WebApps):</strong> Sistemas ejecutados desde navegadores e interconectados en la nube.</li>
+<li><strong>Software de inteligencia artificial:</strong> Sistemas expertos, reconocimiento de patrones, redes neuronales artificiales y procesamiento de lenguaje natural.</li>
+</ul>
+<h4>La Crisis del Software y los Mitos (Gestión, Cliente y Profesionales)</h4>
+<p>Desde finales de los años 60 se acuñó el término <em>crisis del software</em> (o «aflicción crónica») para describir proyectos que superan su presupuesto, se entregan tarde y presentan baja calidad. Gran parte de estos problemas nace de creer en falsos mitos:</p>
+<div class="tabla-contenedor">
+<table class="tabla-datos">
+<thead>
+<tr><th>Tipo de Mito</th><th>Creencia Errónea (Mito)</th><th>Realidad en Ingeniería de Software</th></tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Mito de Gestión</strong></td>
+<td>«Si nos atrasamos en el calendario, podemos añadir más programadores y recuperar el tiempo».</td>
+<td><strong>Ley de Brooks:</strong> Añadir más personas a un proyecto de software retrasado solo lo retrasará más, debido al tiempo invertido en capacitar a los nuevos y al crecimiento cuadrático de los canales de comunicación.</td>
+</tr>
+<tr>
+<td><strong>Mito de Gestión</strong></td>
+<td>«Ya tenemos un libro lleno de estándares y procedimientos; eso garantiza calidad».</td>
+<td>¿El libro realmente se usa o está empolvado? Los estándares solo funcionan si reflejan la práctica moderna y el equipo los aplica a diario.</td>
+</tr>
+<tr>
+<td><strong>Mito del Cliente</strong></td>
+<td>«Una declaración general de los objetivos basta para comenzar a escribir código; los detalles los vemos después».</td>
+<td>Una definición inicial pobre es la principal causa de fracaso. Es indispensable una comunicación continua y formalizar los requisitos desde el inicio.</td>
+</tr>
+<tr>
+<td><strong>Mito del Cliente</strong></td>
+<td>«Los requisitos cambian continuamente, pero los cambios se asimilan fácil porque el software es flexible».</td>
+<td>El costo de un cambio crece exponencialmente según la fase: 1x durante el análisis, de 1.5x a 6x durante el desarrollo, y de <strong>60x a 100x</strong> cuando el software ya está en producción.</td>
+</tr>
+<tr>
+<td><strong>Mito del Profesional</strong></td>
+<td>«Una vez que escribimos el programa y hacemos que funcione, nuestro trabajo ha terminado».</td>
+<td>Los datos de la industria demuestran que entre el <strong>60% y el 80% de todo el esfuerzo</strong> invertido en un programa ocurre <em>después</em> de que se entrega al cliente por primera vez (etapa de mantenimiento).</td>
+</tr>
+<tr>
+<td><strong>Mito del Profesional</strong></td>
+<td>«Hasta que no tenga el programa corriendo no tengo forma de evaluar su calidad».</td>
+<td>Las <strong>Revisiones Técnicas Formales (RTF)</strong> aplicadas desde el análisis y el diseño son filtros de calidad incluso más efectivos que las pruebas de ejecución para encontrar defectos temprano.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4>El Proceso del Software y los 5 Niveles del Modelo CMM / CMMI (SEI)</h4>
+<p>Un proceso de software establece un <strong>marco común de trabajo</strong> integrado por 5 actividades estructurales (<em>Comunicación, Planeación, Modelado, Construcción y Despliegue</em>) apoyadas por <strong>actividades sombrilla o de protección</strong> que se aplican durante todo el proyecto: seguimiento y control, gestión de riesgos, aseguramiento de calidad (SQA), revisiones técnicas formales, medición, gestión de la configuración (GCS) y reutilización.</p>
+<p>El <em>Software Engineering Institute (SEI)</em> desarrolló el <strong>Modelo de Madurez de Capacidad (CMM / CMMI)</strong> para calificar la madurez del proceso de una organización en 5 niveles:</p>
+<div class="tabla-contenedor">
+<table class="tabla-datos">
+<thead>
+<tr><th>Nivel CMMI</th><th>Nombre del Nivel</th><th>Características del Proceso en la Organización</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>Nivel 1</strong></td><td><strong>Inicial</strong></td><td>El proceso de software es <em>ad hoc</em> e incluso caótico. Pocos procesos están definidos y el éxito depende del esfuerzo individual heroico.</td></tr>
+<tr><td><strong>Nivel 2</strong></td><td><strong>Repetible (Gestionado)</strong></td><td>Se establecen procesos básicos de gestión de proyectos para dar seguimiento al costo, al calendario y a la funcionalidad. Se puede repetir el éxito en proyectos similares.</td></tr>
+<tr><td><strong>Nivel 3</strong></td><td><strong>Definido</strong></td><td>El proceso de software tanto para gestión como para ingeniería está documentado, estandarizado e integrado en un proceso estándar para toda la organización.</td></tr>
+<tr><td><strong>Nivel 4</strong></td><td><strong>Gestionado Cuantitativamente</strong></td><td>Se recopilan medidas detalladas del proceso y de la calidad del producto. Tanto el proceso como los productos se comprenden y controlan estadísticamente.</td></tr>
+<tr><td><strong>Nivel 5</strong></td><td><strong>Optimizado</strong></td><td>La mejora continua del proceso se logra mediante la retroalimentación cuantitativa del propio proceso y la introducción planificada de ideas y tecnologías innovadoras.</td></tr>
+</tbody>
+</table>
+</div>
+<div class="caja-ejemplo">
+<strong>Ejemplo práctico:</strong> Cuando un equipo universitario programa sin control de cambios y depende de que un solo integrante «salve el proyecto la noche anterior», opera en <em>Nivel 1 (Inicial)</em>. Cuando estandariza su documento de requisitos, su flujo de ramas en Git y sus revisiones técnicas para todas las entregas del semestre, evoluciona hacia un esquema <em>Definido (Nivel 3)</em>.
+                </div>
+<h4>Video Explicativo del Tema 1.2</h4>
+<div class="contenedor-video">
+<iframe allowfullscreen="" src="https://www.youtube-nocookie.com/embed/JM_1zpd5E44" title="Fundamentos y Visión General de la Ingeniería de Software"></iframe>
+<p class="pie-recurso">Fuente del video: Ingeniería de Software Académica — <a href="https://www.youtube.com/watch?v=JM_1zpd5E44" target="_blank">https://www.youtube.com/watch?v=JM_1zpd5E44</a></p>
+</div>
+<!-- Actividad Interactiva 1.2 -->
+
+<div class="caja-bibliografia">
+<strong>Fuente bibliográfica (APA 7):</strong> Pressman, R. S., &amp; Maxim, B. R. (2021). <em>Ingeniería del software: Un enfoque práctico</em> (9.ª ed., Caps. 1–2). McGraw-Hill. · SEI / ISACA (2023). <em>CMMI® Model V3.0</em>.
+                </div>
+</div>
+</div>
+<!-- SUBTEMA 1.3 DETALLADO -->
+<div class="seccion-subtema subtema-u1" id="u1-t3">
+<div class="tarjeta">
+<h3>1.3 Modelos del proceso de software: Lineal secuencial, Construcción de prototipos y Técnicas de 4ª generación</h3>
+<p>Un <strong>modelo de proceso</strong> (o paradigma de ingeniería de software) es una estrategia prescriptiva elegida según la naturaleza del proyecto y de la aplicación, los métodos y herramientas a utilizar, y los controles y entregas que se requieren.</p>
+<h4>1. El Modelo Lineal Secuencial (Ciclo de Vida Clásico o en Cascada)</h4>
+<p>Propuesto originalmente por Winston Royce, sugiere un enfoque sistemático y estrictamente secuencial en el que la salida documentada de una etapa constituye la entrada de la siguiente:</p>
+<ol>
+<li><strong>Ingeniería y modelado de sistemas/información:</strong> Como el software siempre forma parte de un sistema mayor, primero se establecen los requisitos de todos los elementos del sistema y luego se asigna un subconjunto de estos requisitos al software.</li>
+<li><strong>Análisis de los requisitos del software:</strong> El proceso de recopilación se centra e intensifica especialmente en el software para comprender el dominio de la información, la función requerida, el comportamiento, el rendimiento y la interconexión. Se documenta y se revisa con el cliente.</li>
+<li><strong>Diseño:</strong> Proceso de múltiples pasos que se enfoca en cuatro atributos distintos del programa: la estructura de datos, la arquitectura del software, las representaciones de la interfaz y el detalle procedimental (algoritmos). Traduce los requisitos en una representación evaluable antes de que comience la codificación.</li>
+<li><strong>Generación de código:</strong> El diseño debe traducirse en una forma legible por la máquina. Si el diseño se realiza de manera detallada, la codificación puede llevarse a cabo de forma casi mecánica.</li>
+<li><strong>Pruebas:</strong> Se centran en los aspectos lógicos internos del software (caja blanca) y en los dominios funcionales externos (caja negra) para descubrir errores y asegurar que una entrada definida produzca resultados reales que concuerden con los requeridos.</li>
+<li><strong>Mantenimiento:</strong> El software indudablemente sufrirá cambios después de ser entregado al cliente (debido a errores no detectados, adaptación a un nuevo sistema operativo o periférico, o porque el cliente requiere ampliaciones funcionales). El mantenimiento vuelve a aplicar cada una de las fases precedentes a un programa ya existente.</li>
+</ol>
+<p><strong>Por qué se critica el modelo lineal:</strong> (a) Los proyectos reales rara vez siguen el flujo secuencial propuesto; (b) Es difícil para el cliente establecer todos los requisitos explícitamente al principio; (c) El cliente debe tener mucha paciencia porque no existirá una versión operativa hasta etapas muy avanzadas del proyecto; y (d) Genera «estados de bloqueo» en los que algunos miembros del equipo deben esperar a que otros terminen tareas dependientes.</p>
+<h4>2. El Modelo de Construcción de Prototipos</h4>
+<p>Ocurre con frecuencia que un cliente define un conjunto de objetivos generales para el software, pero no identifica los requisitos detallados de entrada, procesamiento o salida. En estos casos, el paradigma de construcción de prototipos ofrece el mejor enfoque mediante cinco pasos iterativos:</p>
+<ol>
+<li><strong>Recolección y refinamiento de requisitos:</strong> Desarrollador y cliente se reúnen y definen los objetivos globales del software, identificando qué requisitos son conocidos y qué áreas necesitan mayor definición.</li>
+<li><strong>Diseño rápido:</strong> Se centra en una representación de aquellos aspectos del software que serán visibles para el usuario/cliente (por ejemplo, enfoques de entrada y formatos de pantallas de salida).</li>
+<li><strong>Construcción del prototipo:</strong> El diseño rápido lleva a la creación de un prototipo funcional inicial.</li>
+<li><strong>Evaluación del prototipo por el cliente:</strong> El cliente prueba el prototipo y lo utiliza para refinar los requisitos del software que se desarrollará.</li>
+<li><strong>Refinamiento iterativo:</strong> Se produce un proceso iterativo en el que el prototipo es «afinado» para satisfacer las necesidades del cliente, permitiendo al mismo tiempo que el desarrollador comprenda mejor lo que se necesita hacer.</li>
+</ol>
+<div class="caja-nota">
+<strong>Riesgos del modelo de prototipos:</strong> (1) El cliente ve lo que parece ser una versión funcional del software sin saber que se construyó con «chicle y alambre» sin considerar la calidad global ni el mantenimiento a largo plazo, y exige que se entregue de inmediato. (2) El desarrollador hace compromisos de implementación (usar un sistema operativo o lenguaje inapropiado o un algoritmo ineficiente) solo para hacer que el prototipo funcione rápido, y luego esas malas decisiones se quedan en el sistema definitivo. <strong>Regla clave:</strong> Acordar desde el inicio si el prototipo será <em>desechable</em> (solo para descubrir requisitos) o <em>evolutivo</em>.
+                </div>
+<h4>3. Técnicas de Cuarta Generación (4GL / 4GT)</h4>
+<p>El término <strong>Técnicas de Cuarta Generación (4GT)</strong> abarca un amplio espectro de herramientas de software que tienen algo en común: facilitan al ingeniero del software la especificación de alguna característica del software a alto nivel, tras lo cual la herramienta genera automáticamente el código fuente basándose en la especificación del técnico. Incluye lenguajes no procedimentales para consulta de bases de datos (SQL), generación de informes, manipulación de datos, interacción y definición de pantallas, y capacidades gráficas de alto nivel.</p>
+<p><strong>Fases del paradigma 4GT:</strong> (1) Recopilación de requisitos; (2) Estrategia de diseño (indispensable para sistemas grandes, aun usando 4GL); (3) Implementación usando un lenguaje de 4ª generación; y (4) Prueba, documentación y transición a producción.</p>
+<h4>Panorama Comparativo de Todos los Modelos de Proceso</h4>
+<div class="tabla-contenedor">
+<table class="tabla-datos">
+<thead>
+<tr><th>Modelo de Proceso</th><th>Idea Central</th><th>Cuándo Conviene Aplicarlo</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>Lineal Secuencial (Cascada)</strong></td><td>Fases en orden secuencial estricto; cada una cierra antes de iniciar la siguiente.</td><td>Requisitos estables, normativos y bien comprendidos desde el inicio.</td></tr>
+<tr><td><strong>Construcción de Prototipos</strong></td><td>Maqueta funcional rápida para descubrir y validar requisitos junto con el usuario.</td><td>Cuando los objetivos son generales pero los detalles de interfaz o reglas son difusos.</td></tr>
+<tr><td><strong>Técnicas de 4ª Generación (4GL)</strong></td><td>Especificación no procedimental de alto nivel con generación automática de código.</td><td>Sistemas de información pequeños o medianos centrados en reportes y bases de datos.</td></tr>
+<tr><td><strong>DRA / RAD (Desarrollo Rápido)</strong></td><td>Ciclos ultracortos de 60 a 90 días con equipos en paralelo y componentes reutilizables.</td><td>Sistemas de información modulables con alcance bien acotado y plazos muy cortos.</td></tr>
+<tr><td><strong>Modelo Incremental</strong></td><td>Combina el lineal con prototipos entregando el sistema por incrementos (primero el producto núcleo).</td><td>Cuando es prioritario entregar el núcleo operativo rápido o hay poco personal al inicio.</td></tr>
+<tr><td><strong>Modelo en Espiral (Boehm)</strong></td><td>Iterativo evolutivo que incorpora análisis explícito de riesgos en cada vuelta de la espiral.</td><td>Sistemas de gran escala, complejos y con altos riesgos técnicos o financieros.</td></tr>
+<tr><td><strong>Desarrollo Basado en Componentes</strong></td><td>Ensambla aplicaciones a partir de bibliotecas de componentes de software preempaquetados (COTS).</td><td>Cuando existen componentes reutilizables probados en el dominio de la organización.</td></tr>
+<tr><td><strong>Métodos Formales</strong></td><td>Especificación matemática rigurosa y demostración formal de corrección libre de ambigüedad.</td><td>Sistemas críticos para la vida humana (aviación, reactores nucleares, equipos médicos).</td></tr>
+<tr><td><strong>Marcos Ágiles (Scrum / XP)</strong></td><td>Iteraciones cortas (Sprints de 1 a 4 semanas), entrega continua y adaptación al cambio.</td><td>Proyectos dinámicos donde los requisitos del negocio evolucionan constantemente.</td></tr>
+</tbody>
+</table>
+</div>
+<h4>Video Explicativo del Tema 1.3</h4>
+<div class="contenedor-video">
+<iframe allowfullscreen="" src="https://www.youtube-nocookie.com/embed/3d9hCL8Nn0E" title="Modelos de Desarrollo de Software"></iframe>
+<p class="pie-recurso">Fuente del video: TodoCode / YouTube Educación — <a href="https://www.youtube.com/watch?v=3d9hCL8Nn0E" target="_blank">https://www.youtube.com/watch?v=3d9hCL8Nn0E</a></p>
+</div>
+<!-- Actividad Interactiva 1.3 A -->
+
+<!-- Actividad Interactiva 1.3 B -->
+
+<div class="caja-bibliografia">
+<strong>Fuente bibliográfica (APA 7):</strong> Pressman, R. S. (2010). <em>Ingeniería del software: Un enfoque práctico</em> (7.ª ed., Cap. 2: Modelos del proceso, pp. 30–56). McGraw-Hill. · Boehm, B. W. (1988). A Spiral Model of Software Development and Enhancement. <em>IEEE Computer</em>, 21(5), 61–72.
+                </div>
+</div>
+</div>
+<!-- SUBTEMA 1.4 DETALLADO -->
+<div class="seccion-subtema subtema-u1" id="u1-t4">
+<div class="tarjeta">
+<h3>1.4 Ingeniería de sistemas e ingeniería de la información</h3>
+<p>La <strong>Ingeniería de Sistemas</strong> es una actividad interdisciplinaria que precede a la ingeniería de software, pues el software nunca opera en el vacío sino dentro de un <strong>sistema basado en computadora</strong> integrado por seis elementos que interactúan para transformar información:</p>
+<ol>
+<li><strong>Software:</strong> Programas de computadora, estructuras de datos y su documentación.</li>
+<li><strong>Hardware:</strong> Dispositivos electrónicos que proporcionan capacidad de cálculo y dispositivos electromecánicos (sensores, motores, lectores) que interactúan con el mundo exterior.</li>
+<li><strong>Personas (Usuarios y operadores):</strong> Quienes interactúan con el hardware y el software.</li>
+<li><strong>Bases de datos:</strong> Grandes colecciones organizadas de información a las que se accede mediante el software.</li>
+<li><strong>Documentación:</strong> Manuales, impresos y material descriptivo que retrata el uso y operación del sistema.</li>
+<li><strong>Procedimientos:</strong> Pasos que definen el uso específico de cada elemento del sistema o el contexto de negocio en que reside.</li>
+</ol>
+<h4>1. Jerarquía de la Ingeniería de Sistemas (Las 4 Visiones)</h4>
+<p>La ingeniería de sistemas abarca una colección de métodos «de arriba hacia abajo» (<em>top-down</em>) que refinan el problema a través de cuatro visiones sucesivas:</p>
+<ul>
+<li><strong>Visión del Mundo (VM):</strong> Examina los dominios de negocio o tecnología de más alto nivel para establecer qué sistemas deben construirse.</li>
+<li><strong>Visión del Dominio (VD):</strong> Se enfoca en un área específica de interés (por ejemplo, manufactura, finanzas o control vehicular) y los datos/funciones que la componen.</li>
+<li><strong>Visión de los Elementos (VE):</strong> Identifica cada elemento concreto del sistema (hardware, software, personas, base de datos) y le asigna sus responsabilidades funcionales.</li>
+<li><strong>Visión Detallada (VDet):</strong> Desarrolla los modelos técnicos detallados de diseño e implementación de cada elemento asignado.</li>
+</ul>
+<p>Al construir modelos del sistema en cada visión, el ingeniero debe explicitar los <strong>supuestos</strong> (que reducen el número de permutaciones posibles), las <strong>simplificaciones</strong> (que permiten crear el modelo en tiempo razonable), las <strong>limitaciones</strong> (que ayudan a acotar las fronteras del sistema) y las <strong>preferencias</strong> (que indican la arquitectura preferida por el cliente).</p>
+<h4>2. Ingeniería de la Información (IE — James Martin) y Planificación de la Estrategia de Información (PEI)</h4>
+<p>Cuando el contexto del sistema a desarrollar es toda una empresa comercial o institución, se aplica la <strong>Ingeniería de la Información (IE)</strong> propuesta por <em>James Martin</em>, la cual trata los <strong>datos corporativos como un recurso estratégico</strong> y se divide en cuatro fases piramidales:</p>
+<ol>
+<li><strong>Fase 1 — Planificación de la Estrategia de Información (PEI):</strong> Contempla a toda la empresa como una entidad global. Define las <em>metas y objetivos estratégicos</em> del negocio, identifica los <em>Factores Críticos de Éxito (FCE)</em>, levanta el modelo de datos empresarial a nivel de entidades corporativas (Cliente, Producto, Orden, Empleado) y construye matrices de relación entre funciones del negocio y entidades de datos. Su resultado es una <strong>Arquitectura de Información</strong> tripartita: <em>Arquitectura de Datos</em>, <em>Arquitectura de Aplicaciones</em> e <em>Infraestructura Tecnológica</em>.</li>
+<li><strong>Fase 2 — Análisis del Área de Negocio (AAN / BAA):</strong> Una vez priorizadas las áreas en la PEI, se selecciona un área o departamento específico (ej. Control de Calidad, Inventarios o Recursos Humanos) y se modela con detalle su información (mediante diagramas Entidad-Relación) y sus flujos de transformación (mediante diagramas de descomposición de procesos y flujo de datos), cruzándolos en matrices CRUD (<em>Create, Read, Update, Delete</em>) para aislar exactamente qué sistemas de software requiere esa área.</li>
+<li><strong>Fase 3 — Diseño del Sistema:</strong> Traduce los requisitos aislados en el BAA al diseño de bases de datos y programas.</li>
+<li><strong>Fase 4 — Construcción e Implantación:</strong> Codificación, pruebas y puesta en marcha.</li>
+</ol>
+<h4>3. Ingeniería de Productos y Arquitectura del Sistema (Modelo de Hatley y Pirbhai)</h4>
+<p>Cuando el contexto del trabajo es la construcción de un <strong>producto comercial o industrial</strong> (un automóvil inteligente, un teléfono móvil, un robot médico), se aplica la <strong>Ingeniería de Productos</strong>. Sus pasos son: obtención de requisitos del cliente, análisis de viabilidad (económica, técnica, legal y de alternativas), asignación de funciones entre hardware/software/personas, y el <strong>Modelado de la Arquitectura del Sistema</strong>.</p>
+<p>El método de <strong>Hatley y Pirbhai</strong> representa cualquier sistema basado en computadora usando una <em>plantilla genérica de arquitectura</em> formada por cinco regiones o procesadores: (1) Procesamiento de interfaz de usuario, (2) Procesamiento de entrada, (3) Función y control del sistema, (4) Procesamiento de salida, y (5) Mantenimiento y autoprueba, documentados mediante tres diagramas fundamentales:</p>
+<div class="tabla-contenedor">
+<table class="tabla-datos">
+<thead>
+<tr><th>Diagrama de Hatley-Pirbhai</th><th>Siglas</th><th>Propósito y Qué Representa en la Arquitectura del Sistema</th></tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Diagrama de Contexto de Arquitectura</strong></td>
+<td><strong>ACD</strong></td>
+<td>Establece la frontera de información entre el sistema que se va a implementar (mostrado como un único nodo central) y el entorno externo en el que opera (entidades externas que producen o consumen información).</td>
+</tr>
+<tr>
+<td><strong>Diagrama de Flujo de Arquitectura</strong></td>
+<td><strong>AFD</strong></td>
+<td>Refina el ACD mostrando los subsistemas principales dentro de las 5 regiones de la plantilla de arquitectura y los flujos de información y control que circulan entre dichos subsistemas.</td>
+</tr>
+<tr>
+<td><strong>Diagrama de Interconexión de Arquitectura</strong></td>
+<td><strong>AID</strong></td>
+<td>Representa los medios físicos reales (buses de datos, canales de red, enlaces serie, pantallas, sensores) a través de los cuales se comunican físicamente los subsistemas del AFD.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="caja-repaso">
+<strong>Puntos clave para repasar (Tema 1.4):</strong>
+<ul>
+<li>6 elementos de un sistema basado en computadora: Software, Hardware, Personas, Bases de datos, Documentación y Procedimientos.</li>
+<li>4 visiones jerárquicas: Mundo → Dominio → Elementos → Detallada.</li>
+<li>Ingeniería de la Información (James Martin): PEI (toda la empresa) → BAA (un área de negocio) → Diseño → Construcción.</li>
+<li>Arquitectura de sistemas (Hatley-Pirbhai): ACD (contexto), AFD (flujo lógico entre subsistemas) y AID (interconexión física).</li>
+</ul>
+</div>
+<h4>Video Explicativo del Tema 1.4</h4>
+<div class="contenedor-video">
+<iframe allowfullscreen="" src="https://www.youtube-nocookie.com/embed/UUsNCcoM3e4" title="Jerarquía de la Ingeniería de Sistemas"></iframe>
+<p class="pie-recurso">Fuente del video: Cátedra de Ingeniería de Sistemas — <a href="https://www.youtube.com/watch?v=UUsNCcoM3e4" target="_blank">https://www.youtube.com/watch?v=UUsNCcoM3e4</a></p>
+</div>
+<div class="caja-bibliografia">
+<strong>Fuente bibliográfica (APA 7):</strong> Pressman, R. S. (2002). <em>Ingeniería del software: Un enfoque práctico</em> (5.ª ed., Cap. 10: Ingeniería de sistemas, pp. 165–186). McGraw-Hill. · Martin, J. (1989). <em>Information Engineering</em>. Prentice Hall. · Hatley, D. J., &amp; Pirbhai, I. A. (1987). <em>Strategies for Real-Time System Specification</em>.
+                </div>
+</div>
+</div>
+<!-- CUESTIONARIO DE LA UNIDAD I -->
+<div class="seccion-subtema subtema-u1" id="u1-quiz">
+<div class="tarjeta">
+<h3>Autoevaluación Interactiva de la Unidad I</h3>
+<p>Responde las siguientes 5 preguntas sobre los temas 1.1 a 1.4 para verificar tu aprendizaje:</p>
+<div id="contenedorQuizU1"></div>
+</div>
+</div>
+</main>
+<!-- PIE DE PÁGINA INSTITUCIONAL Y DATOS DEL EQUIPO -->
+<footer class="pie-pagina">
+<div class="pie-contenedor">
+<div>
+<strong>Proyecto Final — Ingeniería de Software (Noviembre 2026)</strong><br/>
+                Universidad Autónoma de Coahuila (UAdeC) · Facultad de Ingeniería Mecánica y Eléctrica (FIME)<br/>
+                Docente: M.I. Liliana Guadalupe Alonso Sánchez · 7° Semestre, Sección C, Carrera: ISC
+            </div>
+<div>
+<strong>Integrantes del Equipo:</strong><br/>
+                1. Axel Gabriel Sifuentes Hernández (<a href="mailto:axelsifuentes@uadec.edu.mx">axelsifuentes@uadec.edu.mx</a>)<br/>
+                2. Miguel Ángel Andrade de los Santos (<a href="mailto:miguelandrade@uadec.edu.mx">miguelandrade@uadec.edu.mx</a>)<br/>
+                Redes: <a href="https://www.facebook.com/share/18JKcGhgsj/" target="_blank">Facebook</a> |
+                <a href="https://www.instagram.com/axel.gsh?srtk=MThwaTBlMThrd2VkaQ==" target="_blank">Instagram</a> |
+                <a href="https://www.tiktok.com/@gsh_axel?_r=1&amp;_t=ZT-9At7OpCqkCk" target="_blank">TikTok</a>
+</div>
+</div>
+</footer>
+<script src="js/funciones.js"></script>
+<script src="js/procesos.js"></script>
+<script src="js/cuestionarios.js"></script>
+</body>
+</html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio y Control de Acceso | Ingeniería de Software UAdeC FIME</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+    <header class="encabezado-uadec">
+        <div class="encabezado-contenedor">
+            <a href="index.html" class="marca-uadec">
+                <div class="icono-logo">&lt;/&gt;</div>
+                <div class="titulo-sitio">
+                    <h1>UNIVERSIDAD AUTÓNOMA DE COAHUILA — FIME</h1>
+                    <p>Ingeniería de Software &amp; Gestión de Proyectos · Informe Educativo</p>
+                </div>
+            </a>
+            <div class="controles-superiores">
+                <span id="etiquetaUsuarioActivo" class="pildora-sesion">Iniciar Sesión</span>
+                <button type="button" class="btn-modo-tema" onclick="cambiarModoTema()" title="Cambiar entre modo claro y oscuro"><i class="fa-solid fa-moon"></i></button>
+                <button type="button" id="btnCerrarSesion" class="boton boton-rojo" style="display:none;" onclick="cerrarSesion()">Cerrar Sesión</button>
+            </div>
+        </div>
+    </header>
+
+    <nav class="barra-navegacion">
+        <div class="menu-contenedor">
+            <ul class="menu-lista">
+                <li><a href="index.html" id="nav-btn-inicio" class="activo">Inicio</a></li>
+                <li><a href="unidad1.html" id="nav-btn-u1" onclick="return abrirUnidad('unidad1.html', 'pagina-u1')">Unidad I: Fundamentos y Proceso</a></li>
+                <li><a href="unidad2.html" id="nav-btn-u2" onclick="return abrirUnidad('unidad2.html', 'pagina-u2')">Unidad II: Análisis y Modelado</a></li>
+                <li><a href="unidad3.html" id="nav-btn-u3" onclick="return abrirUnidad('unidad3.html', 'pagina-u3')">Unidad III: Gestión, Planificación y Calidad</a></li>
+                <li><a href="unidad4.html" id="nav-btn-u4" onclick="return abrirUnidad('unidad4.html', 'pagina-u4')">Unidad IV: Diseño y Pruebas</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="contenedor-principal">
+        <section class="banner-hero">
+            <span class="etiqueta-hero">&#9679; Plataforma Académica 2026 · UAdeC FIME</span>
+            <h2>Ingeniería de Software<br>&amp; Gestión de Proyectos</h2>
+            <div class="subtitulo-proyecto">Plataforma Web Informativa para el Aprendizaje de Ingeniería de Software</div>
+            <p>
+                Aprendizaje completo y detallado estructurado en las <strong>4 unidades oficiales de la materia</strong>. Integra explicaciones teóricas, fórmulas explicadas paso a paso, diagramas técnicos, ejemplos prácticos, con fuentes bibliográficas y cuestionarios finales de cada unidad.
+            </p>
+            <div class="botones-hero">
+                <a href="#introduccion-materia" class="btn-hero-blanco">Leer Introducción</a>
+                <a href="#acceso-plataforma" class="btn-hero-transparente">Iniciar Sesión / Ver Unidades</a>
+            </div>
+        </section>
+
+        <div id="acceso-plataforma"></div>
+        <div id="avisoBloqueoUnidades" style="display:none;"></div>
+
+        <!-- SECCIÓN DE LOGIN Y REGISTRO (Base de Datos Simulada con usuario.json y localStorage) -->
+        <div id="seccionFormulariosAcceso" class="fila-dos-columnas">
+            <!-- Columna 1: Formulario de Login -->
+            <div class="tarjeta">
+                <h3>1. Iniciar Sesión (Login)</h3>
+                <p>Ingresa tu correo y contraseña para desbloquear el acceso a las 4 unidades del curso:</p>
+                <form onsubmit="return iniciarSesion(event)">
+                    <div class="grupo-formulario">
+                        <label for="loginEmail">Correo electrónico:</label>
+                        <input type="email" id="loginEmail" placeholder="Ejemplo: correo@uadec.edu.mx" required>
+                    </div>
+                    <div class="grupo-formulario">
+                        <label for="loginPassword">Contraseña:</label>
+                        <input type="password" id="loginPassword" placeholder="Ingresa tu contraseña" required>
+                    </div>
+                    <button type="submit" class="boton boton-primario">Ingresar a la Plataforma</button>
+                </form>
+                <div id="mensajeLogin" style="display:none;"></div>
+            </div>
+
+            <!-- Columna 2: Formulario de Registro -->
+            <div class="tarjeta">
+                <h3>2. Registro de Nuevo Usuario</h3>
+                <p>¿No tienes cuenta? Regístrate en la base de datos simulada completando los siguientes datos:</p>
+                <form onsubmit="return registrarUsuario(event)">
+                    <div class="grupo-formulario">
+                        <label for="regNombre">Nombre completo:</label>
+                        <input type="text" id="regNombre" placeholder="Nombre y apellidos" required>
+                    </div>
+                    <div class="grupo-formulario">
+                        <label for="regEmail">Correo electrónico:</label>
+                        <input type="email" id="regEmail" placeholder="correo@uadec.edu.mx" required>
+                    </div>
+                    <div class="grupo-formulario">
+                        <label for="regPassword">Contraseña (mínimo 6 caracteres):</label>
+                        <input type="password" id="regPassword" placeholder="Mínimo 6 caracteres" required>
+                    </div>
+                    <button type="submit" class="boton boton-verde">Registrar Usuario</button>
+                </form>
+                <div id="mensajeRegistro" style="display:none;"></div>
+            </div>
+        </div>
+
+        <!-- PANEL CUANDO LA SESIÓN ESTÁ INICIADA -->
+        <div id="seccionSesionActiva" class="tarjeta" style="display:none;">
+            <h3>Sesión Iniciada Correctamente</h3>
+            <p>Bienvenido(a): <strong id="nombreUsuarioBienvenida"></strong> — <span id="correoUsuarioBienvenida"></span></p>
+            <p>El acceso a las 4 unidades académicas y a los cuestionarios de evaluación está habilitado.</p>
+        </div>
+
+        <section id="introduccion-materia" class="tarjeta">
+            <div class="encabezado-intro">
+                <div class="icono-intro"><i class="fa-solid fa-book-bookmark"></i></div>
+                <div>
+                    <span class="etiqueta-seccion">Visión General</span>
+                    <h3 style="border:none; padding:0; margin:0;">Introducción a la materia</h3>
+                </div>
+            </div>
+
+            <p style="font-weight:bold; color:#393e4b; font-size:15.5px;">
+                Fundamentos, procesos y estándares de ingeniería informática
+            </p>
+            <p>
+                Esta plataforma académica representa un marco sistemático de aprendizaje para la asignatura de <strong>Ingeniería de Software</strong> en la Facultad de Ingeniería Mecánica y Eléctrica (FIME) de la Universidad Autónoma de Coahuila. Fundamentada en la metodología clásica de <em>Roger S. Pressman</em> e <em>Ian Sommerville</em>, y complementada con los estándares internacionales <strong>ISO/IEC/IEEE 12207</strong> e <strong>ISO/IEC 25010</strong>, la disciplina se concibe como la aplicación de un enfoque sistemático, disciplinado y cuantificable al desarrollo, operación y mantenimiento de sistemas de software de alta calidad. Lejos de limitarse a la simple redacción de código, la ingeniería informática se sostiene sobre cuatro capas tecnológicas: el compromiso organizacional con la <strong>calidad</strong>, el <strong>proceso</strong> de gestión, los <strong>métodos</strong> técnicos y las <strong>herramientas</strong> automatizadas (CASE).
+            </p>
+            <p>
+                A lo largo de las <strong>cuatro unidades del programa oficial</strong>, el estudiante examinará en la <strong>Unidad I</strong> la naturaleza singular del producto software frente al hardware (curva de deterioro por cambios frente a la curva de la bañera), los mitos de gestión y desarrollo, los niveles de madurez CMMI, los modelos de proceso (Lineal Secuencial en Cascada, Construcción de Prototipos y Técnicas de Cuarta Generación 4GL) y la ingeniería de sistemas e información (PEI, BAA y arquitectura Hatley-Pirbhai ACD, AFD y AID).
+            </p>
+            <p>
+                En la <strong>Unidad II</strong> se aborda a profundidad la ingeniería de requerimientos (entrevistas, FAST, QFD y casos de uso), el ámbito y la descomposición del problema, el modelo de análisis estructurado —integrado por el Diagrama Entidad-Relación (DER y normalización 1FN–3FN), los Diagramas de Flujo de Datos (DFD nivelados con regla del equilibrio y PSPEC), el Diagrama de Transición de Estados (DTE y CSPEC) y el Diccionario de Datos central— culminando en la Especificación de Requisitos de Software (<strong>ERS / IEEE Std 830 e ISO 29148</strong>).
+            </p>
+            <p>
+                Posteriormente, la <strong>Unidad III</strong> desarrolla la gestión de proyectos mediante las cuatro P (<em>Personal, Producto, Proceso y Proyecto</em>), el liderazgo MOI, el cálculo de canales de comunicación, la estimación empírica (Tres Puntos, <strong>COCOMO / COCOMO II</strong>, ecuación de Putnam y árboles de decisión <em>Make or Buy</em>), las métricas orientadas al tamaño (KLOC) y a la función (<strong>Puntos de Función IFPUG</strong> y Eficiencia en la Eliminación de Defectos <strong>EED</strong>), la gestión proactiva de riesgos (Plan <strong>RMMM</strong> y exposición <code>RE = P × C</code>), el aseguramiento de calidad (<strong>SQA IEEE 730</strong> y Revisiones Técnicas Formales <strong>RTF</strong>) y la Gestión de la Configuración del Software (<strong>GCS IEEE 828</strong>). Finalmente, la <strong>Unidad IV</strong> cubre los principios y métodos de diseño modular (alta cohesión funcional, bajo acoplamiento de datos, Fan-in/Fan-out, documento <strong>IEEE 1016</strong>, reglas de oro de <em>Theo Mandel</em> para interfaces IHM y programación estructurada de <em>Böhm-Jacopini</em>) junto con las estrategias de prueba de <strong>Caja Negra</strong> (clases de equivalencia y valores límite) y <strong>Caja Blanca</strong> (complejidad ciclomática de <em>Thomas McCabe</em> <code>V(G)</code>, condiciones, flujo de datos y bucles).
+            </p>
+
+            <h4>Video Introductorio: ¿Qué es la Ingeniería de Software?</h4>
+            <div class="contenedor-video">
+                <iframe src="https://www.youtube-nocookie.com/embed/fXBG8ZAaBKI" title="Panorama General de la Ingeniería de Software" allowfullscreen></iframe>
+                <p class="pie-recurso">Fuente del video: Canal Informático / YouTube Educación — <a href="https://www.youtube.com/watch?v=fXBG8ZAaBKI" target="_blank">https://www.youtube.com/watch?v=fXBG8ZAaBKI</a></p>
+            </div>
+        </section>
+
+        <!-- ACCESO A LAS CUATRO UNIDADES DE LA MATERIA -->
+        <div class="tarjeta">
+            <h3>Temario Oficial: Acceso a las 4 Unidades de Ingeniería de Software</h3>
+            <div id="estadoAccesoUnidades" class="caja-alerta alerta-info">
+                Nota: Los contenidos de las 4 unidades solo son accesibles tras iniciar sesión.
+            </div>
+
+            <div class="fila-cuatro-unidades">
+                <!-- Unidad I -->
+                <div class="tarjeta" style="margin-bottom:0;">
+                    <h4>UNIDAD I. Fundamentos de la Ingeniería de Software y del Proceso</h4>
+                    <ul>
+                        <li><strong>1.1</strong> Introducción: conceptos, calidad, procesos, métodos, herramientas CASE y tecnología de procesos.</li>
+                        <li><strong>1.2</strong> El producto y el proceso del software: características frente al hardware, curva de deterioro, categorías, mitos, actividades sombrilla y los 5 niveles CMMI.</li>
+                        <li><strong>1.3</strong> Modelos del proceso: Lineal secuencial (Cascada), Construcción de prototipos, Técnicas de 4ª generación (4GL) y tabla comparativa general.</li>
+                        <li><strong>1.4</strong> Ingeniería de sistemas e información: Jerarquía (4 visiones), PEI, Análisis del área de negocio (BAA), ingeniería de productos y arquitectura Hatley-Pirbhai (ACD, AFD, AID).</li>
+                    </ul>
+                    <a href="unidad1.html" class="boton boton-primario" onclick="return abrirUnidad('unidad1.html', 'pagina-u1')">Entrar a la Unidad I</a>
+                </div>
+
+                <!-- Unidad II -->
+                <div class="tarjeta" style="margin-bottom:0;">
+                    <h4>UNIDAD II. Análisis y Modelado de Requisitos</h4>
+                    <ul>
+                        <li><strong>2.1</strong> Análisis de requisitos y principios: 5 tareas del análisis, entrevistas, FAST, QFD, casos de uso y los 5 principios operativos de Davis.</li>
+                        <li><strong>2.2</strong> Identificación del problema, ámbito y descomposición: estudio de viabilidad (técnica, económica, calendario, recursos) y partición funcional.</li>
+                        <li><strong>2.3</strong> Elementos del modelo de análisis: Modelado de datos (DER, cardinalidad, modalidad, 1FN–3FN), funcional (DFD por niveles, regla de equilibrio, PSPEC) y comportamiento (DTE y CSPEC).</li>
+                        <li><strong>2.4</strong> Técnicas de análisis estructurado y documentación: Diccionario de Datos (notación formal) y Especificación de Requisitos ERS (IEEE Std 830 / ISO 29148).</li>
+                    </ul>
+                    <a href="unidad2.html" class="boton boton-primario" onclick="return abrirUnidad('unidad2.html', 'pagina-u2')">Entrar a la Unidad II</a>
+                </div>
+
+                <!-- Unidad III -->
+                <div class="tarjeta" style="margin-bottom:0;">
+                    <h4>UNIDAD III. Gestión, Planificación y Calidad de Proyectos</h4>
+                    <ul>
+                        <li><strong>3.1</strong> Gestión y planificación: Las 4 P's, liderazgo MOI, estructuras DD/CD/CC, canales <code>C=n(n-1)/2</code>, principio W5HH, recursos, Tres Puntos, COCOMO básico/II, ecuación de Putnam y árbol Make or Buy.</li>
+                        <li><strong>3.2</strong> Métricas del proceso, proyecto y calidad: Medida vs Métrica vs Indicador, KLOC, cálculo paso a paso de Puntos de Función (PF), integridad, disponibilidad y EED.</li>
+                        <li><strong>3.3</strong> Gestión de riesgos: Estrategias reactivas vs proactivas, categorías, exposición al riesgo <code>RE = P × C</code>, regla de Pareto 80/20 y Plan RMMM.</li>
+                        <li><strong>3.4</strong> Control y aseguramiento de la calidad: Costo de la calidad, evolución TQM/Seis Sigma, SQA (IEEE 730), amplificación de defectos y Revisiones Técnicas Formales (RTF).</li>
+                        <li><strong>3.5</strong> Gestión de la configuración (GCS): Elementos de configuración (ECS básicos y agregados), Líneas Base, control de versiones (Git), control de cambios y auditoría.</li>
+                    </ul>
+                    <a href="unidad3.html" class="boton boton-primario" onclick="return abrirUnidad('unidad3.html', 'pagina-u3')">Entrar a la Unidad III</a>
+                </div>
+
+                <!-- Unidad IV -->
+                <div class="tarjeta" style="margin-bottom:0;">
+                    <h4>UNIDAD IV. Diseño y Pruebas del Software</h4>
+                    <ul>
+                        <li><strong>4.1</strong> Conceptos y principios del diseño: 10 principios de Davis, abstracción, refinamiento, modularidad, arquitectura, Fan-in/Fan-out, ocultamiento de Parnas, 7 niveles de Cohesión y 5 de Acoplamiento.</li>
+                        <li><strong>4.2</strong> Modelado y documentación del diseño: Trazabilidad análisis-diseño y Especificación del Diseño (IEEE Std 1016).</li>
+                        <li><strong>4.3</strong> Métodos de diseño: Datos (DER a SQL), Arquitectónico (transformación y transacción), Interfaces IHM (3 reglas de oro de Mandel), Procedimental (Böhm-Jacopini, Nassi-Shneiderman, tablas 2^n, PDL) y Optimización.</li>
+                        <li><strong>4.4</strong> Fundamentos y métodos de prueba: Objetivos de Myers, Verificación vs Validación, principios de prueba, 5^20 caminos y testabilidad.</li>
+                        <li><strong>4.5</strong> Diseño de casos de prueba: Partición de Equivalencia, Análisis de Valores Límite (AVL) y grafos causa-efecto.</li>
+                        <li><strong>4.6</strong> Pruebas de caja blanca y estructura de control: Camino básico de McCabe, Complejidad Ciclomática <code>V(G) = A-N+2 = P+1</code>, condiciones, flujo de datos (DEF-USE) y prueba de bucles.</li>
+                    </ul>
+                    <a href="unidad4.html" class="boton boton-primario" onclick="return abrirUnidad('unidad4.html', 'pagina-u4')">Entrar a la Unidad IV</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- PIE DE PÁGINA INSTITUCIONAL Y DATOS DEL EQUIPO -->
+    <footer class="pie-pagina">
+        <div class="pie-contenedor">
+            <div>
+                <strong>Proyecto Final — Ingeniería de Software (Noviembre 2026)</strong><br>
+                Universidad Autónoma de Coahuila (UAdeC) · Facultad de Ingeniería Mecánica y Eléctrica (FIME)<br>
+                Docente: M.I. Liliana Guadalupe Alonso Sánchez · 7° Semestre, Sección C, Carrera: ISC
+            </div>
+            <div>
+                <strong>Integrantes del Equipo:</strong><br>
+                1. Axel Gabriel Sifuentes Hernández (<a href="mailto:axelsifuentes@uadec.edu.mx">axelsifuentes@uadec.edu.mx</a>)<br>
+                2. Miguel Ángel Andrade de los Santos (<a href="mailto:miguelandrade@uadec.edu.mx">miguelandrade@uadec.edu.mx</a>)<br>
+                Redes: <a href="https://www.facebook.com/share/18JKcGhgsj/" target="_blank">Facebook</a> |
+                <a href="https://www.instagram.com/axel.gsh?srtk=MThwaTBlMThrd2VkaQ==" target="_blank">Instagram</a> |
+                <a href="https://www.tiktok.com/@gsh_axel?_r=1&_t=ZT-9At7OpCqkCk" target="_blank">TikTok</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/funciones.js"></script>
+</body>
+</html>
